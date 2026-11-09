@@ -1,0 +1,95 @@
+
+/* Tablet and smaller laptop layouts: 759px–1200px */
+@media (min-width:759px) and (max-width:1200px){
+.header{padding-inline:3%;gap:14px}nav{gap:15px}nav a{font-size:12px}.hero{min-height:430px}.hero-art{min-height:430px}.hero-copy{padding-left:4vw}.three{gap:13px}.path{padding:15px 12px;gap:10px}.ico{flex-basis:46px;width:46px;height:46px}.why{gap:18px}.benefits article{padding:13px;gap:9px}.footer-grid{gap:18px}
+}
+/* Mobile and tablet: 0px–758px */
+@media screen and (min-width:0px) and (max-width:758px){
+.header{min-height:66px;padding:9px 4%;gap:10px}.brand{font-size:16px}.logo{width:35px;height:35px;font-size:26px}
+.menu-toggle{display:flex;flex-direction:column;gap:5px;background:none;border:0;padding:8px;cursor:pointer;margin-left:auto}.menu-toggle i{width:23px;height:2px;background:white;border-radius:2px}
+nav{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);padding:10px 5% 17px;flex-direction:column;gap:0;box-shadow:0 9px 15px #00102c30}nav.open{display:flex}nav a{padding:11px 3px;border-bottom:1px solid #ffffff20}nav .active{color:var(--yellow);border-bottom:1px solid #ffffff20}.top-cta{padding:10px 13px;font-size:10px}
+.hero{display:flex;flex-direction:column}.hero-copy{padding:38px 6% 30px}.hero h1{font-size:clamp(32px,8vw,42px)}.hero-copy p{font-size:13px}.hero-art{min-height:315px}.laptop{top:48px;height:220px}.webscreen{height:165px}.phone{top:115px}.classroom{padding-top:25px}
+.stats{margin-top:17px;padding:17px 12px}.stats h2{font-size:14px}.stat-grid{grid-template-columns:1fr 1fr;row-gap:16px}.stat-grid>div{justify-content:flex-start}.stat-grid i{width:40px;height:40px;font-size:20px}
+.three{grid-template-columns:1fr;gap:12px}.path{padding:17px}.path p{font-size:12px}.why{grid-template-columns:1fr;gap:17px}.team-art{max-width:420px;height:145px}.benefits{gap:9px}.benefits article{padding:12px;flex-direction:column}.lists{grid-template-columns:1fr;gap:13px}.quotes{grid-template-columns:1fr;gap:12px}.final{flex-direction:column;align-items:flex-start;padding:25px 6%}.final .actions{width:100%}.final .btn{flex:1 1 100%}.footer-grid{grid-template-columns:1fr 1fr;gap:22px 17px}.footer-grid>div{border:0;padding:0}.bottom{flex-direction:column;gap:8px}
+}
+/* Small mobile screens: up to 499px */
+@media screen and (max-width:499px){
+.header{
+    padding-inline:3%
+}
+.top-cta{
+    padding:9px 10px
+}
+.header-copy{
+    padding:32px 5% 27px
+}
+.header-container h1{
+    font-size:32px;
+    letter-spacing:-1px
+}
+.header-copy p{
+    font-size:12px
+}
+.header-copy .actions{
+    flex-direction:column
+}
+.header-copy .btn{width:100%
+}
+.header-image{
+    min-height:255px
+}
+.stat-grid{
+    gap:13px 7px
+}
+.stat-grid i{
+    width:34px;
+    height:34px;
+    font-size:17px
+}
+.stat-grid b{
+    font-size:18px
+}
+.stat-grid small{
+    font-size:9px
+}
+.section-title h2{
+    font-size:20px
+}
+.path{
+    gap:11px;
+    padding:14px
+}
+.ico{
+    flex-basis:45px;
+    width:45px;
+    height:45px;
+    font-size:24px
+}
+.benefits{
+    grid-template-columns:1fr
+}
+.benefits article{
+    flex-direction:row
+}.quotes article{
+    padding:15px;
+    gap:8px
+}
+.quotes p{
+    font-size:10px
+}
+.quotes article>i{
+    font-size:29px
+}
+.final h2{
+    font-size:20px
+}.footer-grid{
+    grid-template-columns: 1fr 1fr;
+}
+.quick-link{
+    display: none;
+}
+.bottom{
+    font-size:9px;
+    place-items: center;
+}
+}

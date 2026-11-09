@@ -1,0 +1,354 @@
+
+/* ---------- 1. COLOURS (change them here) ---------- */
+:root { 
+  --navy:#0a1a5c; 
+  --blue:#1243e0; 
+  --gold:#f5a800; 
+  --text:#0a1a5c; 
+  --muted:#5b6b9a; 
+  --line:#d3ddf3; 
+  --red:#dc2626; 
+  --bg:#f5f8ff;
+  --yellow:#b68e22;
+  --white:#ffffff;
+}
+
+/* ---------- 2. BASE ---------- */
+* { 
+    box-sizing: border-box; 
+}
+body { 
+    margin:0; 
+    min-height:100vh; 
+    display:flex; 
+    flex-direction:column; 
+    align-items:center; 
+    padding:32px 16px;
+    font-family:"Segoe UI",Arial,sans-serif; 
+    color:var(--text); 
+    background:url(asset/home\ page.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-attachment:fixed;
+}
+a { 
+  color:var(--blue); 
+  font-weight:600; 
+  text-decoration:none; 
+}
+a:hover { 
+  text-decoration:underline; 
+}
+
+/* ---------- 3. LOGO AND HEADING ---------- */
+.logo { 
+  display:flex; 
+  align-items:center; 
+  gap:10px; 
+  color:var(--white); 
+  font-size:28px;
+  font-weight:700; 
+  line-height:1; 
+}
+.logo:hover { 
+  text-decoration:none; 
+}
+.logo .mark { 
+  font-size:44px; 
+  color:var(--blue); 
+}
+.logo b { 
+  display:block; 
+  color:var(--gold); 
+}
+h1 { 
+  margin:28px 0 12px; 
+  font-size:36px; 
+  text-align:center;
+  color: var(--white); 
+}
+.intro { 
+  max-width:480px; 
+  text-align:center; 
+  color:var(--white); 
+  line-height:1.6; 
+  margin:0 0 24px; }
+
+/* ---------- 4. FORM CARD ---------- */
+.card { 
+  width:100%; 
+  max-width:500px; 
+  background:#fff; 
+  border:1px solid var(--line);
+  border-radius:16px; 
+  padding:26px 24px; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0rgba(0, 0, 0, 0.19);  
+}
+.field { 
+  margin-bottom:16px; 
+}
+.field label, .roles-title { 
+  display:block; 
+  font-weight:600; 
+  font-size:14px; 
+  margin-bottom:6px; 
+  margin-top: 20px;
+}
+.wrap { 
+  position:relative; 
+}
+.ico { 
+  position:absolute; 
+  left:14px; 
+  top:50%; 
+  transform:translateY(-50%); 
+  color:var(--muted); 
+}
+.wrap input { 
+  width:100%; 
+  padding:13px 44px 13px 42px; 
+  font-size:16px; 
+  border:1px solid var(--line); border-radius:8px; 
+  color:var(--text); 
+  background:#fff; 
+}
+.wrap input:focus { 
+  outline:2px solid var(--blue); border-color:var(--blue); 
+}
+.eye { 
+  position:absolute; 
+  right:10px; 
+  top:50%; 
+  transform:translateY(-50%); 
+  background:none; 
+  border:0; 
+  font-size:18px; 
+  cursor:pointer; 
+}
+.err { 
+  display:none; 
+  color:var(--red); 
+  font-size:13px; 
+  margin-top:4px; 
+}
+.field.invalid input { 
+  border-color:var(--red); 
+}
+.field.invalid .err { 
+  display:block; 
+}
+.gender-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.gender-box {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10x;
+    margin-top: 10px;
+}
+.gender-box label {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.gender-box select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 16px;
+  color: #333;
+}
+.gender-box select:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+.gender-box select:disabled {
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+.country-box {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10x;
+    margin-top: 10px;
+}
+.country-box label {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.country-box select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 16px;
+  color: #333;
+}
+.country-box select:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+.country-box select:disabled {
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+.state-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10x;
+    margin-top: 10px;
+}
+.state-box label {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.state-box select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 16px;
+  color: #333;
+}
+.state-box select:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+.state-box select:disabled {
+  background: #f3f4f6;
+  cursor: not-allowed;
+}
+/* "I am signing up as" cards */
+.roles { 
+  display:grid; 
+  grid-template-columns:repeat(3,1fr); gap:12px; 
+}
+.role { 
+  position:relative; 
+  border:1px solid var(--line); border-radius:12px; 
+  padding:14px 8px; 
+  text-align:center; 
+  cursor:pointer; 
+  font-size:13px; 
+  color:var(--muted); 
+}
+.role input { 
+  position:absolute; 
+  opacity:0; 
+}
+/* the radio is hidden, the card is the button */
+.role .circle { 
+  width:46px; 
+  height:46px; 
+  border-radius:50%; 
+  margin:0 auto 8px; 
+  display:grid; 
+  place-items:center; 
+  font-size:22px; 
+  color:#fff; 
+}
+.role strong { 
+  display:block; 
+  color:var(--text); 
+  font-size:14px; 
+  margin-bottom:4px; 
+}
+.role.selected { 
+  border:2px solid var(--blue); background:#eef3ff; 
+}
+.role:focus-within { 
+  outline:2px solid var(--blue); 
+}
+.roles-wrap.invalid .roles-err { display:block; 
+}
+.btn { 
+  width:100%;
+  margin-top:20px; 
+  padding:14px; 
+  border:0; 
+  border-radius:8px; 
+  background:var(--blue); 
+  color:#fff; 
+  font-size:18px; 
+  font-weight:700; 
+  cursor:pointer;
+  transition: 0.75s ease-in-out; 
+}
+.btn:hover{
+  background-color: var(--yellow);
+}
+.small { 
+  text-align:center; 
+  font-size:15px; 
+  margin:16px 0 0; 
+}
+.msg { 
+  text-align:center; 
+  min-height:20px; 
+  margin:10px 0 0; 
+  font-size:15px; 
+  color:var(--blue); 
+}
+.terms { 
+  max-width:420px; 
+  text-align:center; 
+  margin-top:22px; 
+  line-height:1.6; 
+  color: var(--white);
+}
+.terms a{
+  color: black
+}
+
+/* ---------- 5. RESPONSIVE ---------- */
+/* Other screens: 759px – 1200px */
+@media (min-width:759px) and (max-width:1200px) { 
+  .card { 
+    max-width:540px;
+  } 
+}
+/* Tablet: up to 758px */
+@media (min-width:0px) and (max-width:758px) {
+  body { 
+    padding:24px 14px; 
+  }
+  h1 { 
+    font-size:30px; 
+  }
+  .card { 
+    padding:22px 18px; 
+  }
+}
+/* Mobile: up to 499px */
+@media screen and (max-width:499px) {
+  .logo { 
+    font-size:24px; 
+  }
+  h1 { 
+    font-size:26px; 
+  }
+  .roles { 
+    grid-template-columns:1fr; 
+  }
+  /* role cards stack in one column */
+  .role { 
+    display:flex; 
+    align-items:center; 
+    gap:12px; 
+    text-align:left; 
+    padding:12px; 
+  }
+  .role .circle { 
+    margin:0; 
+    flex:none; 
+  }
+}

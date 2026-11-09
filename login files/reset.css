@@ -1,0 +1,291 @@
+
+/* ---------- 1. COLOURS (change them here) ---------- */
+:root { 
+  --navy:#0a1a5c; 
+  --blue:#1243e0; 
+  --gold:#f5a800; 
+  --text:#0a1a5c; 
+  --muted:#5b6b9a; 
+  --line:#d3ddf3; 
+  --red:#dc2626; 
+  --bg:#f5f8ff;
+  --yellow:#b68e22;
+  --white:#fff; 
+}
+
+/* ---------- 2. BASE ---------- */
+* { 
+    box-sizing: border-box; 
+}
+body { 
+    margin:0; 
+    min-height:100vh; 
+    display:flex; 
+    flex-direction:column; 
+    align-items:center; 
+    padding:32px 16px;
+    font-family:"Segoe UI",Arial,sans-serif;
+    color:var(--text); 
+    background: url(asset/home\ page.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+a { 
+    color:var(--blue); 
+    font-weight:600; 
+    text-decoration:none; 
+}
+a:hover { 
+    text-decoration:underline; 
+}
+
+/* ---------- 3. LOGO ---------- */
+.logo { 
+    display:flex; 
+    align-items:center; 
+    gap:10px; 
+    color:var(--navy); 
+    font-size:28px; 
+    font-weight:700; 
+    line-height:1; 
+}
+.logo:hover { 
+    text-decoration:none; 
+}
+.logo .mark { 
+    font-size:44px; 
+    color:var(--blue); 
+}
+.logo span{
+    color: var(--white);
+}
+.logo b { 
+    display:block; 
+    color:var(--gold); 
+}
+
+/* ---------- 4. RESET CARD ---------- */
+.card { 
+    width:100%; 
+    max-width:400px; 
+    margin-top:28px; 
+    background:#fff; 
+    border:1px solid var(--line); 
+    border-radius:16px; 
+    padding:30px 28px; 
+    box-shadow:0 8px 30px rgba(18,67,224,.08); text-align:center; 
+}
+.bigicon { 
+    position:relative; 
+    width:110px; 
+    height:110px; 
+    margin:0 auto 14px; 
+    border-radius:50%; 
+    background:#e3ecfb; 
+    display:grid; 
+    place-items:center; 
+    font-size:52px; 
+}
+.bigicon span { 
+    position:absolute; 
+    right:14px; 
+    bottom:14px; 
+    width:30px; 
+    height:30px; 
+    border-radius:50%; 
+    background:var(--blue); 
+    font-size:15px; 
+    display:grid; 
+    place-items:center; 
+}
+.card h1 { 
+    margin:0 0 10px; 
+    font-size:32px; 
+}
+.card .sub { 
+    color:var(--muted); 
+    line-height:1.5; 
+    margin:0 0 24px; 
+}
+.field { 
+    text-align:left; 
+    margin-bottom:18px; 
+}
+.field label { 
+    display:block; 
+    font-weight:600; 
+    font-size:14px; 
+    margin-bottom:6px; 
+}
+.wrap { 
+    position:relative; 
+}
+.ico { 
+    position:absolute; 
+    left:14px; 
+    top:50%; 
+    transform:translateY(-50%); 
+    color:var(--muted); 
+}
+.wrap input { 
+    width:100%; 
+    padding:13px 14px 13px 42px; 
+    font-size:16px; 
+    border:1px solid var(--line); 
+    border-radius:8px; 
+    color:var(--text); 
+    background:#fff; 
+}
+.wrap input:focus { 
+    outline:2px solid var(--blue); 
+    border-color:var(--blue); 
+}
+.err { 
+    display:none; 
+    color:var(--red); 
+    font-size:13px; 
+    margin-top:4px; 
+}
+.field.invalid input { 
+    border-color:var(--red); 
+}
+.field.invalid .err { 
+    display:block; 
+}
+.btn { 
+    width:100%; 
+    padding:14px; 
+    border:0; 
+    border-radius:8px; 
+    background:var(--blue); 
+    color:#fff; 
+    font-size:18px; 
+    font-weight:700; 
+    cursor:pointer; 
+    transition: 0.75s ease-in-out;
+}
+.btn:hover{
+    background-color:var(--gold);
+    color: var(--white);
+}
+.msg { 
+    min-height:20px; 
+    margin:10px 0 0; 
+    font-size:15px; 
+    color:var(--blue); 
+}
+.small { 
+    font-size:15px; 
+    margin:14px 0 0; 
+}
+.small:active, .small:visited{
+    color: var(--red);
+}
+
+/* ---------- 5. ILLUSTRATION AND SECURITY NOTE ---------- */
+.illus { 
+    margin:26px 0 18px; 
+    font-size:90px; 
+    line-height:1; 
+    position:relative; 
+}
+.illus span { 
+    font-size:44px; 
+    position:absolute; 
+    margin-left:-14px;
+    bottom:0;
+    background:var(--blue); 
+    border-radius:50%; 
+    width:70px; 
+    height:70px; 
+    display:inline-grid; 
+    place-items:center; 
+}
+.note { 
+    width:100%; 
+    max-width:480px; 
+    display:flex; 
+    align-items:center; 
+    gap:14px; 
+    background:#e9f0fd; 
+    border-radius:12px; 
+    padding:14px 18px; 
+    color:var(--muted); 
+    line-height:1.5; 
+}
+.note i { 
+    font-style:normal; 
+    font-size:32px; 
+}
+/* ---------- 7. POPUP ---------- */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .55);
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+}
+.popup-overlay.show {
+  display: flex;
+}
+.popup-box {
+  background: #fff;
+  width: 100%;
+  max-width: 380px;
+  padding: 30px 26px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+}
+.popup-icon {
+  font-size: 44px;
+  margin-bottom: 8px;
+}
+.popup-box h2 {
+  margin: 0 0 8px;
+  color: var(--text);
+}
+.popup-box p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ---------- 6. RESPONSIVE ---------- */
+/* Other screens: 759px – 1200px */
+@media (min-width:759px) and (max-width:1200px) { 
+    .card, .note { 
+        max-width:460px; 
+    }
+}
+/* Tablet: up to 758px */
+@media (min-width:0px) and (max-width:758px) {
+  body { 
+    padding:24px 14px; 
+}
+  .card { 
+    padding:24px 20px; 
+}
+  .card h1 { 
+    font-size:28px; 
+}
+}
+/* Mobile: up to 499px */
+@media screen and (max-width:499px) {
+  .logo { 
+    font-size:24px; 
+}
+  .bigicon { width:90px; height:90px; font-size:42px; }
+  .illus { 
+    font-size:70px; 
+}
+  .note { 
+    font-size:14px; 
+    padding:12px 14px; 
+}
+}

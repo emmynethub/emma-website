@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Makes the page scale correctly on phones and tablets -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emmynet ICT Hub</title>
+  <link rel="stylesheet" href="training.css">
+  <link rel="stylesheet" href="trainingmedia.css">
+</head>
+<body>
+  <!-- Main navigation -->
+  <header class="navbar">
+    <a class="brand" href="#home" aria-label="Emmynet ICT Hub home">
+      <span class="brand-mark">⌘</span>
+      <span class="brand-name">Emmynet<span>ICT Hub</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+     <a href="../index.html">Home</a>
+      <a href="../emmynet-about-page/about.html">About</a>
+      <a href="../emmynet-service-page/services.html">Services</a>
+      <a class="active" href="../emmynet-training-page/training.html">Training</a>
+      <a  href="../emmynet-contact-page/contact.html">Contact</a>
+      <a href="../emmynet-faq-page/FAQ.html">FAQ</a>
+      <a class="btn btn-yellow nav-cta" href="#apply">Get Started</a>
+    </nav>
+    <!-- Mobile hamburger button -->
+    <button 
+    class="menu-toggle"
+    id="menuToggle"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="navLinks"
+    type="button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  </header>
+
+  <main>
+    <!--image container -->
+    <section class="header-container" id="home">
+      <img class="header-image" src="assets/training.jpg" alt="Learners practicing technology skills in a training room">
+      <div class="image-content">
+        <h1>Learn the Skills.<br><span>Build the Career.</span></h1>
+        <p>Practical, hands-on tech training designed to take you from beginner to job-ready taught by people who build real products for real clients.</p>
+        <div class="header-buttons">
+          <a class="btn btn-yellow" href="#programs">View Programs <span>→</span></a>
+          <a class="btn btn-white-outline" href="javascript:void(0)
+          "onclick="openContactPopup()">Talk to an Advisor <span>→</span></a>
+         
+          <!-- Contact Pop-up -->
+          <div class="contact-popup" id="contactPopup">
+          <div class="popup-content">
+            <button class="close-btn" onclick="closeContactPopup()">&times;</button>
+              <h3>Talk to an Advisor</h3>
+              <p>Choose how you would like to contact us.</p>
+              <a href="https://wa.me/2348165960618" target="_blank" class="whatsapp-btn">
+              WhatsApp Us</a>
+              <a href="tel:+2348165960618" class="call-btn">Call Us</a>
+          </div>
+        </div>
+        </div>
+        <div class="header-stats">
+          <div class="mini-stat">
+            <span class="symbol">♟</span>
+            <span><strong>1,000+</strong><small>Learners Trained</small></span>
+          </div>
+          <div class="mini-stat">
+            <span class="symbol">♧</span>
+            <span><strong>85%</strong><small>Graduates Placed</small></span>
+          </div>
+          <div class="mini-stat">
+            <span class="symbol">☆</span>
+            <span><strong>Hands-on</strong><small>Real Projects</small></span>
+          </div>
+          <div class="mini-stat">
+            <span class="symbol">♙</span>
+            <span><strong>Job-Ready</strong><small>Skills</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why students choose our training -->
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p>WHY TRAIN WITH US</p>
+        <h2>More Than Training. We Build Futures.</h2>
+      </div>
+      <div class="benefits">
+        <article class="benefit-card">
+          <div class="round-icon blue">⌨</div>
+          <div>
+            <h3>Real Projects,<br>Not Just Theory</h3>
+            <p>Our curriculum is shaped by actual client work you'll learn the tools and workflows companies use today, not outdated textbook methods.</p>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <div class="round-icon green">♟</div>
+          <div><h3>Taught by<br>Practitioners</h3>
+            <p>Your instructors are active developers and tech professionals not just educators reciting slides.</p>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <div class="round-icon purple">◎</div>
+          <div>
+            <h3>Career-Focused</h3>
+            <p>We build your skills and your portfolio, so you leave with proof of what you can do not just a certificate.</p>
+          </div>
+        </article>
+        <article class="benefit-card">
+          <div class="round-icon orange">♧</div>
+          <div><h3>Flexible Paths</h3>
+            <p>Whether you're a complete beginner, a career-switcher, or a company upskilling your team, we have a track for you.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Course cards -->
+    <section class="section programs" id="programs">
+      <div class="section-heading">
+        <p>OUR TRAINING PROGRAMS</p>
+        <h2>Find the Right Program for You</h2>
+      </div>
+
+      <div class="program-grid">
+        <article class="program-card" id="frontEnd">
+          <div class="program-photo">
+            <img src="assets/web-development.jpg" alt="Laptop showing website code"><div class="round-icon blue">⌨</div>
+        </div>
+          <div class="program-body" >
+            <h3>Frontend Development</h3>
+            <p>Go from zero to job-ready developer. Covers front-end, back-end, and real project deployment.</p>
+            <div class="details"><strong>Duration:</strong> 4 month<br>
+              <strong>Format:</strong> Hybrid (Online + In-person)
+            </div>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+
+        <article class="program-card" id="backEnd">
+          <div class="program-photo">
+            <img src="assets/web-development.jpg" alt="Laptop showing website code"><div class="round-icon gold">⌨</div>
+        </div>
+          <div class="program-body" >
+            <h3>Backend Development</h3>
+            <p>Go from zero to job-ready developer. Covers front-end, back-end, and real project deployment.</p>
+            <div class="details"><strong>Duration:</strong> 5 month<br>
+              <strong>Format:</strong> Hybrid (Online + In-person)
+            </div>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+
+        <article class="program-card" id="fullStack">
+          <div class="program-photo">
+            <img src="assets/web-development.jpg" alt="Laptop showing website code"><div class="round-icon navy-blue">⌨</div>
+        </div>
+          <div class="program-body">
+            <h3>Full-Stack Development</h3>
+            <p>Go from zero to job-ready developer. Covers front-end, back-end, and real project deployment.</p>
+            <div class="details"><strong>Duration:</strong> 7 month<br>
+              <strong>Format:</strong> Hybrid (Online + In-person)
+            </div>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+
+        <article class="program-card" id="graphic">
+          <div class="program-photo">
+            <img src="assets/web-development.jpg" alt="Laptop showing website code"><div class="round-icon emerald-green">⌨</div>
+        </div>
+          <div class="program-body" >
+            <h3>Graphic Design</h3>
+            <p>Go from zero to job-ready developer. Covers front-end, back-end, and real project deployment.</p>
+            <div class="details"><strong>Duration:</strong> 3 month<br>
+              <strong>Format:</strong> Hybrid (Online + In-person)
+            </div>
+            <a href="#" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+
+        <article class="program-card" id="freelancing">
+          <div class="program-photo">
+            <img src="assets/web-development.jpg" alt="Laptop showing website code"><div class="round-icon red">⌨</div>
+        </div>
+          <div class="program-body">
+            <h3>Freelancing</h3>
+            <p>Go from zero to job-ready developer. Covers front-end, back-end, and real project deployment.</p>
+            <div class="details"><strong>Duration:</strong> 1 month<br>
+              <strong>Format:</strong> Hybrid (Online + In-person)
+            </div>
+            <a href="#" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+
+        <article class="program-card" id="automation">
+          <div class="program-photo">
+            <img src="assets/web-development.jpg" alt="Laptop showing website code"><div class="round-icon green">⌨</div>
+        </div>
+          <div class="program-body">
+            <h3>AI Automation</h3>
+            <p>Go from zero to job-ready developer. Covers front-end, back-end, and real project deployment.</p>
+            <div class="details"><strong>Duration:</strong> 2 month<br>
+              <strong>Format:</strong> Hybrid (Online + In-person)
+            </div>
+            <a href="#" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <div class="program-photo">
+            <img src="assets/web-development.jpg" alt="Laptop showing website code"><div class="round-icon purple">⌨</div>
+        </div>
+          <div class="program-body">
+            <h3>AI Prompting</h3>
+            <p>Go from zero to job-ready developer. Covers front-end, back-end, and real project deployment.</p>
+            <div class="details"><strong>Duration:</strong> 3 Weeks<br>
+              <strong>Format:</strong> Hybrid (Online + In-person)
+            </div>
+            <a href="#" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <div class="program-photo">
+            <img src="assets/web-development.jpg" alt="Laptop showing website code"><div class="round-icon orange">⌨</div>
+        </div>
+          <div class="program-body">
+            <h3> Computer Basics</h3>
+            <p>Go from zero to job-ready developer. Covers front-end, back-end, and real project deployment.</p>
+            <div class="details"><strong>Duration:</strong> 3 month<br>
+              <strong>Format:</strong> Hybrid (Online + In-person)
+            </div>
+            <a href="#" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+        
+        <article class="program-card">
+          <div class="program-photo">
+            <img src="assets/it-data.jpg" alt="IT professional working with server equipment">
+            <div class="round-icon green">▤</div>
+        </div>
+          <div class="program-body">
+            <h3>IT &amp; Data<br>Fundamentals</h3>
+            <p>Foundational training in IT systems, data handling, and core technical literacy perfect for career starters.</p>
+            <div class="details"><strong>Duration:</strong> 2 month<br>
+              <strong>Format:</strong> Online
+            </div>
+            <a href="#" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <div class="program-photo">
+            <img src="assets/career-upskilling.jpg" alt="Developer improving software skills">
+            <div class="round-icon purple">▥</div>
+          </div>
+          <div class="program-body">
+            <h3>Career<br>Upskilling Track</h3>
+            <p>For working professionals looking to add technical skills to their existing career path.</p>
+            <div class="details"><strong>Duration:</strong> 2 month<br>
+              <strong>Format:</strong> Evenings / Weekends
+            </div>
+            <a href="#" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+
+        <article class="program-card">
+          <div class="program-photo"><img src="assets/corporate-training.jpg" alt="Instructor leading a team training session">
+            <div class="round-icon orange">♟</div>
+          </div>
+          <div class="program-body">
+            <h3>Corporate Team<br>Training</h3>
+            <p>Custom training programs delivered directly to your organization built around your team's specific tools and needs.</p>
+            <div class="details"><strong>Format:</strong> On-site or Remote<br>
+              <span style="color:var(--text)">Scoped to your team</span>
+            </div>
+            <a href="#" class="apply-btn">Apply Now</a>
+          </div>
+        </article>
+      </div>
+      <div class="training-policy">
+        <a href="../emmynet-faq-page/FAQ.html">Read more about our training policy</a>
+      </div>
+      <div class="program-footnote">
+        <span>Small Class Sizes</span>
+        <span>Mentorship &amp; Guidance</span>
+        <span>Practical Projects</span>
+        <span>Certificate of Completion</span>
+        <span>Job Placement Support</span>
+      </div>
+
+      <!-- Journey / process panel -->
+      <div class="journey" id="services">
+        <div class="section-heading">
+          <p>HOW IT WORKS</p>
+          <h2>Your Journey to a Better Career in 4 Steps</h2>
+        </div>
+        <div class="journey-grid">
+          <article class="step">
+            <span class="step-number">1</span>
+            <div class="step-icon">▤</div>
+            <div>
+              <h3>Apply / Enroll</h3>
+              <p>Tell us your goals and current skill level. We'll help you choose the right path.</p>
+            </div>
+            <span class="step-arrow">⟶</span>
+          </article>
+          <article class="step">
+            <span class="step-number">2</span>
+            <div class="step-icon">♧</div>
+            <div>
+              <h3>Learn</h3>
+              <p>Hands-on coursework, mentorship, and real projects guided by industry experts.</p>
+            </div>
+            <span class="step-arrow">⟶</span>
+          </article>
+          <article class="step">
+            <span class="step-number">3</span>
+            <div class="step-icon">▱</div>
+            <div>
+              <h3>Build a Portfolio</h3>
+              <p>Work on real projects and build a portfolio that shows employers what you can do.</p>
+            </div>
+            <span class="step-arrow">⟶</span>
+          </article>
+          <article class="step">
+            <span class="step-number">4</span>
+            <div class="step-icon">♙</div>
+            <div>
+              <h3>Get Placed</h3>
+              <p>Access job placement support, career coaching, and our hiring partner network.</p>
+            </div>
+            </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learner feedback -->
+    <section class="section testimonials" id="portfolio">
+      <div class="section-heading">
+        <p>WHAT OUR LEARNERS &amp; PARTNERS SAY</p>
+      </div>
+      <div class="testimonial-grid" id="testimonialGrid">
+        <article class="testimonial">
+          <img src="assets/testimonial-david.jpg" alt="David O.">
+          <div>
+            <p><span class="quote-mark">“</span>Before Emmynet ICT Hub, I had zero coding experience. Today, I'm a Frontend Developer at a great company. The hands-on projects and mentorship changed everything!</p>
+            <strong>— David O.</strong>
+            <small>Frontend Developer at TechNova</small>
+          </div>
+        </article>
+        <article class="testimonial">
+          <img src="assets/testimonial-mary.jpg" alt="Mary A.">
+          <div>
+            <p><span class="quote-mark">“</span>The team training program was excellent. Our staff learned practical skills we could apply immediately, and the projects were tailored to our business needs.
+          </p><strong>— Mary A.</strong>
+          <small>HR Manager, StartUpX</small>
+        </div>
+        </article>
+      </div>
+      <!-- These dots are interactive and can select testimonial pairs -->
+      <div class="dots" aria-label="Testimonial pages">
+        <button class="active" aria-label="Show testimonial set 1" data-set="0">
+        </button>
+        <button aria-label="Show testimonial set 2" data-set="1"></button>
+        <button aria-label="Show testimonial set 3" data-set="2"></button>
+        <button aria-label="Show testimonial set 4" data-set="3"></button>
+      </div>
+    </section>
+
+    <!-- Apply call to action -->
+    <section class="apply-cta" id="apply">
+      <div class="apply-left">
+        <div class="cap-icon">♧</div>
+        <div>
+          <h2>Ready to Start Learning?</h2>
+          <p>Spots are limited for our upcoming cohort.<br>Take the first step toward your new career.</p>
+        </div>
+      </div>
+      <div class="apply-buttons">
+        <a class="btn btn-yellow" href="mailto:info@emmynetict.com?subject=Training%20Application">Apply Now <span>→</span></a>
+         <a class="btn btn-white-outline" href="javascript:void(0)
+          "onclick="openContactPopup()">Talk to an Advisor <span>→</span></a>
+         
+          <!-- Contact Pop-up -->
+          <div class="contact-popup" id="contactPopup">
+          <div class="popup-content">
+            <button class="close-btn" onclick="closeContactPopup()">&times;</button>
+              <h3>Talk to an Advisor</h3>
+              <p>Choose how you would like to contact us.</p>
+              <a href="https://wa.me/2348165960618" target="_blank" class="whatsapp-btn">
+              WhatsApp Us</a>
+              <a href="tel:+2348165960618" class="call-btn">Call Us</a>
+          </div>
+      </div>
+      <img src="assets/cta-student.jpg" alt="" style="display:none">
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-brand">
+      <a class="brand" href="#home">
+        <span class="brand-mark">⌘</span>
+        <span class="brand-name">Emmynet
+          <span>ICT Hub</span>
+        </span>
+      </a>
+      <p>Building websites. Building skills.<br>Building the future.</p>
+      <div class="social-row">
+        <a href="https://www.facebook.com/ORBUNDE EMMANUEL TERFE" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">f</a>
+        <a href="https://www.LinkedIn.com/ORBUNDE EMMANUEL TERFE" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">in</a>
+        <a href="https://www.Twitter.com/ORBUNDE EMMANUEL TERFE" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">X</a>
+        <a href="https://www.instagram.com/ORBUNDE EMMANUEL TERFE" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">◎</a>
+        <a href="https://www.Youtube.com/ORBUNDE EMMANUEL TERFE" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">▶</a>
+      </div>
+      <p>© 2024 Emmynet ICT Hub. All Rights Reserved.</p>
+    </div>
+    <div class="footer-links">
+      <h3>Quick Links</h3>
+      <a href="../index.html">Home</a>
+      <a href="../emmynet-about-page/about.html">About Us</a>
+      <a href="../emmynet-service-page/services.html">Services</a>
+      <a href="../emmynet-training-page/training.html">Training</a>
+      <a href="../emmynet-contact-page/contact.html">Contact</a>
+      <a href="../emmynet-faq-page/FAQ.html">Faq</a>
+    </div>
+    <div class="footer-programs" id="training">
+      <h3>Training Programs</h3>
+      <a href="training.html#frontEnd">front-end Development</a>
+      <a href="#">IT &amp; Data Fundamentals</a>
+      <a href="#">Career Upskilling Track</a>
+      <a href="#">Corporate Team Training</a>
+      <a href="#">All Programs</a>
+    </div>
+    <div class="footer-contact">
+      <h3>Get in Touch</h3>
+      <a href="tel:+2348165960618"> ☎ &nbsp; +234 8165960618</a>
+      <a href="mailto:emmyneticthub@gmail.com?subject=Website%20Enquiry" target="_blank">
+        <i class="fa fa-envelope" aria-hidden="true"></i> ✉ &nbsp; emmyneticthub@gmail.com
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Benue+State+University+Makurdi,+Benue,+Nigeria" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i> ♦ &nbsp; Benue, Nigeria</a>
+    </div>
+    <div class="legal">
+      <span>© 2024 Emmynet ICT Hub. All Rights Reserved.</span>
+      <span class="policy">
+        <a href="#contact">Privacy Policy</a> &nbsp; | &nbsp; 
+        <a href="#contact">Terms &amp; Conditions</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="training.js"></script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+/* Mobile screens: 499px and below */
+    @media screen and (max-width: 499px) {
+       /* Hamburger lines */
+         .navbar {
+    position: relative;
+    z-index: 1000;
+  }
+    /* position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    z-index: 10; */
+  .brand {
+    width: aut;
+    min-width: 0;
+    justify-content:start !important;
+    flex: 1;
+  }
+
+  .menu-toggle {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* Hide menu until hamburger is clicked */
+.nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    background: var(--navy);
+    padding: 10px 4%;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+
+    z-index: 9999;
+  }
+
+
+  /* Show dropdown when open */
+  .navbar.menu-open .nav-links {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 18px 18px !important;
+    font-size: 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .nav-links a.active {
+    border-bottom: 2px solid var(--yellow);
+  }
+
+  /* Hide CTA until the dropdown opens */
+  .nav-cta {
+    display: none;
+    order: 4;
+    flex: 0 0 100%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar.menu-open .nav-cta {
+    display: flex;
+  }
+  /* Navigation */
+  .navbar {
+    padding: 12px 4%;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .brand {
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    font-size: 19px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .brand-name span {
+    font-size: 15px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    padding: 5px 0;
+  }
+  .nav-cta {
+    width: 100%;
+  }
+      .header-container { 
+        min-height: 340px; 
+    }
+      .header-image { 
+        width: 100%; 
+        opacity: .24; 
+    }
+      .header-content { 
+        width: 100%; 
+        padding: 32px 5%; 
+    }
+      .header-container h1 { 
+        font-size: 39px; 
+        letter-spacing: -1px; 
+    }
+      .header-container p { 
+        font-size: 14px; 
+    }
+      .faq-grid { 
+        grid-template-columns: 1fr; 
+        gap: 0; 
+        padding: 0 4%; 
+        margin-top: 15px; 
+    }
+      .faq-category { 
+        margin-bottom: 13px; 
+    }
+      .category-title { 
+        font-size: 16px; 
+    }
+      .faq-question { 
+        font-size: 12px; 
+        padding: 11px; 
+    }
+      .answer-list { 
+        padding: 0 4%; 
+    }
+      .answer-card { 
+        padding-right: 10px; 
+    }
+      .cta { 
+        display: flex;
+        width: 90%; 
+        padding: 20px; 
+        align-items: flex-start; 
+    }
+      .cta h2 { 
+        font-size: 21px; 
+    }
+      .cta p { 
+        max-width: 270px; 
+    }
+      .cta-image { 
+        right: -5%; 
+        width: 42%; 
+        opacity: .25; 
+    }
+      .cta-buttons { 
+        gap: 8px; 
+    }
+      .cta-buttons .btn { 
+        padding: 9px 11px; 
+    }
+      footer { 
+        padding: 22px 5% 12px; 
+    }
+      .footer-grid { 
+        grid-template-columns: 1fr 1fr; 
+        gap: 20px 14px; 
+    }
+      .footer-column { 
+        border-right: 0; 
+        padding-right: 0; 
+    }
+    .footer-email{
+      font-size: 11px !important;
+    }
+      .footer-brand { 
+        grid-column: 1 / -1; 
+    }
+      .legal { 
+        flex-direction: column; 
+    }
+    }
+
+    /* Tablet screens: 500px to 758px */
+    @media screen and (min-width: 500px) and (max-width: 758px) {
+      .navbar { 
+        flex-wrap: wrap; 
+        gap: 12px; 
+        padding: 10px 3%; 
+    }
+      .brand { 
+        min-width: auto; 
+    }
+      .nav-actions { 
+        margin-left: auto;
+    }
+      .nav-links { 
+        order: 3; 
+        width: 100%; 
+        justify-content: space-between; 
+        gap: 12px; 
+    }
+      .nav-links a { 
+        font-size: 11px; 
+    }
+      .hero { 
+        min-height: 285px; 
+    }
+      .hero-content { 
+        width: 55%; 
+        padding: 25px 4%; 
+    }
+      .hero h1 { 
+        font-size: 39px; 
+    }
+      .hero-image { 
+        width: 54%; 
+        opacity: .85; 
+    }
+      .faq-grid { 
+        padding: 0 3%; 
+        gap: 14px; 
+    }
+      .category-title { 
+        font-size: 15px; 
+    }
+      .faq-question { 
+        padding: 9px; 
+        font-size: 11px; 
+    }
+      .answer-list { 
+        padding: 0 3%; 
+    }
+      .cta { 
+        margin-left: 3%; 
+        margin-right: 3%; 
+        padding-left: 5%; 
+    }
+      .cta-image { 
+        right: 4%; 
+        width: 28%; 
+        opacity: .55;
+    }
+      .footer-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+      .footer-column { 
+        border-right: 0; 
+    }
+      .footer-brand { 
+        grid-column: 1 / -1; 
+    }
+    }
+
+    /* Larger tablets and small laptop screens: 759px to 1200px */
+    @media (min-width: 759px) and (max-width: 1200px) {
+      .navbar { 
+        padding-left: 2%; 
+        padding-right: 2%; 
+        gap: 10px; 
+    }
+      .brand { 
+        min-width: 155px; 
+    }
+      .brand-name { 
+        font-size: 18px; 
+    }
+      .nav-links { 
+        gap: 13px; 
+    }
+      .nav-links a { 
+        font-size: 11px; 
+    }
+      .nav-actions { 
+        gap: 7px; 
+    }
+      .nav-actions .btn { 
+        padding: 8px 11px; 
+    }
+      .hero-content { 
+        padding-left: 5%; 
+    }
+      .faq-grid, .answer-list { 
+        padding-left: 3%; 
+        padding-right: 3%; 
+    }
+      .faq-grid { 
+        gap: 18px; 
+    }
+      .faq-question { 
+        font-size: 11px; 
+    }
+      .cta { 
+        margin-left: 3%; 
+        margin-right: 3%; 
+    }
+      .footer-grid { 
+        gap: 14px; 
+    }
+    }

@@ -1,0 +1,335 @@
+/* Tablet viewport: 500px to 758px */
+@media screen and (min-width:500px) and (max-width:758px)
+{.header{
+    padding:12px 3%;
+    gap:12px;
+}
+.brand{
+    min-width:auto;
+    font-size:17px;
+}
+.brand strong{
+    font-size:15px;
+}
+.logo{
+    font-size:34px;
+}
+.nav{
+    gap:12px;
+}
+.nav a{
+    font-size:11px;
+}
+.header-btn{
+    display:none;
+}
+.image-container{
+    min-height:330px;background-position:60% center;
+}
+.columns{
+    gap:14px;
+}
+.panel{
+    padding:12px 9px;
+}
+.intro{
+    gap:10px;
+    padding-inline:3px;
+}
+.intro .tile{
+    width:50px;
+    height:50px;
+    flex-basis:50px;
+}
+.intro h3{
+    font-size:14px;
+}
+.item{
+    gap:10px;
+}
+.tile.small{
+    width:42px;
+    height:42px;
+    flex-basis:42px;
+}
+.item h4{
+    font-size:12px;
+}
+.item p{
+    font-size:10.5px;
+}
+.steps{
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+.arrow{
+    display:none;
+}
+.consult{
+    gap:15px;
+}
+.consult .btn{
+    margin-right:0;
+}
+.benefits{
+    grid-template-columns:repeat(2,1fr);
+}
+.benefits article:nth-child(2){
+    border-right:0;
+}
+}
+/* Mobile viewport: 499px and below */
+@media screen and (max-width:499px){
+    .header{
+    min-height:68px;
+    padding:10px 5%;
+    gap:10px;
+}
+.brand{
+    min-width:0;
+    gap:8px;
+    font-size:16px;
+}
+.brand strong{
+    font-size:14px;
+}
+.logo{
+    font-size:31px;
+}
+.menu-toggle{
+    display:block;
+    margin-left:auto;
+}
+.header-btn{
+    display:none;
+}
+ /* Dropdown overlays page content on mobile. */ 
+ .nav{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    padding:10px 5% 16px;
+    background:#00102d;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    box-shadow:0 12px 20px #0004;
+    z-index:20;
+}
+.nav.open{
+    display:flex
+}
+.nav a{
+    padding:13px 4px;
+    font-size:14px;
+    border-bottom:1px solid #ffffff20;
+}
+.nav a.active{
+    color:var(--yellow);
+    border-color:var(--yellow);
+}
+.image-container{
+    height: 300px;
+}
+.image img{
+    height: 300px;
+}
+ .image-copy h1{
+    font-size:34px;
+}
+.image-copy p{
+    font-size:13px;
+    max-width:330px;
+}
+.btn{
+    padding:12px 15px;
+    font-size:12px;
+}
+.wrap{
+    width:92%;
+}
+.services{
+    padding-top:24px;
+}
+.heading h2{
+    font-size:22px;
+    line-height:1.2;
+}
+.heading>p:last-child{
+    font-size:12px;
+}
+.columns{
+    grid-template-columns:1fr;
+    gap:18px
+}
+.panel{
+    padding:12px 9px;
+}
+.intro{
+    gap:12px;
+    padding:0 4px 12px;
+}
+.intro .tile{
+    width:53px;
+    height:53px;
+    flex-basis:53px;
+    font-size:25px;
+}
+.intro h3{
+    font-size:15px;
+}
+.intro p{
+    font-size:11px
+}
+.items{
+    padding-inline:10px
+}
+.item{
+    gap:12px;
+    padding:12px 0;
+}
+.tile.small{
+    width:45px;
+    height:45px;
+    flex-basis:45px;
+    font-size:22px
+}
+.item h4{
+    font-size:12.5px;
+}
+.item p{
+    font: size 11px;
+}
+.process{
+    padding-top:22px;
+}
+.steps
+{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px 10px;
+}
+.arrow{
+    display:none;
+}
+.steps article{
+    padding:0 3px;
+}
+.round-icon{
+    width:58px;
+    height:58px;
+    font-size:25px;
+}
+.number{
+    left:calc(50% - 48px);
+}
+.steps h3{
+    font-size:13px;
+}
+.steps p{
+    font-size:11px;
+}
+.consult{
+    flex-wrap:wrap;
+    padding:20px;
+    gap:13px;
+}
+.chat-icon{
+    width:55px;
+    height:55px;
+    flex-basis:55px;
+    font-size:25px;
+}
+.consult-copy{
+    flex:1 1 calc(100% - 75px);
+}
+.consult-copy h2{
+    font-size:18px;
+}
+.consult-copy p{
+    font-size:12px;
+}
+.consult .btn{
+    width:100%;
+    margin:4px 0 0;
+}
+.benefits{
+    grid-template-columns:1fr;
+    padding-top:12px;
+}
+.benefits article{
+    border-right:0;
+    border-bottom:1px solid #d6dfed;padding:12px 4px;
+}
+.benefits article:last-child{border-bottom:0;
+}
+ footer { 
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px 15px; 
+    padding: 20px 5%; 
+}
+.footer-brand, .footer-links { 
+    border-right: 0; 
+    padding-right: 0; 
+}
+.footer-links{
+    display: none;
+}
+.legal { 
+    align-items: center;
+    flex-direction: column; 
+    gap: 4px; 
+}
+}
+/* Medium desktop and landscape tablets */
+@media (min-width:759px) and (max-width:1200px)
+{
+    .header{
+        padding-inline:3%;
+        gap:14px;
+    }
+    .brand{
+        min-width:170px;
+        font-size:18px;
+    }
+    .brand strong{
+        font-size:16px;
+    }
+    .logo{
+        font-size:36px;
+    }
+    .nav{
+        gap:clamp(12px,2vw,25px);
+    }
+    .nav a{
+        font-size:12px;
+    }
+    .image-container{
+        min-height:350px;
+    }
+    .columns{
+        gap:22px;
+    }
+    .item{
+        gap:12px;
+    }
+    .tile.small{
+        width:49px;
+        height:49px;
+        flex-basis:49px;
+    }
+    .consult .btn{
+        margin-right:2%;
+    }
+    .benefits article{
+        padding-inline:10px;
+        gap:9px;
+    }
+    .benefit-icon{
+        width:42px;
+        height:42px;
+        flex-basis:42px;
+    }
+}
+

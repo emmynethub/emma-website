@@ -1,0 +1,405 @@
+
+    /* =========================================================
+       RESPONSIVE VIEWPORTS
+       Mobile: up to 499px
+       Tablet: 500px to 758px (the requested 00px start is 500px)
+       Small laptop/tablet landscape: 759px to 1200px
+       Desktop: above 1200px uses the main styles above
+       ========================================================= */
+
+    /* Mobile phones */
+    @media screen and (max-width: 499px) {
+      body { 
+        font-size: 12px; 
+    }
+      .navbar {
+    position: relative;
+    z-index: 1000;
+  }
+  .brand {
+    width: aut;
+    min-width: 0;
+    justify-content:start !important;
+    flex: 1;
+  }
+
+  .menu-toggle {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* Hide menu until hamburger is clicked */
+.nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+
+    background: var(--navy);
+    padding: 10px 4%;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+
+    z-index: 9999;
+  }
+
+
+  /* Show dropdown when open */
+  .navbar.menu-open .nav-links {
+    display: flex;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 18px 18px !important;
+    font-size: 20px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .nav-links a.active {
+    border-bottom: 2px solid var(--yellow);
+  }
+
+  /* Hide CTA until the dropdown opens */
+  .nav-cta {
+    display: none;
+    order: 4;
+    flex: 0 0 100%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar.menu-open .nav-cta {
+    display: flex;
+  }
+  /* Navigation */
+  .navbar {
+    padding: 12px 4%;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .brand {
+    min-width: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    font-size: 19px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+  }
+
+  .brand-name span {
+    font-size: 15px;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    padding: 5px 0;
+  }
+
+  .nav-cta {
+    width: 100%;
+  }
+      .header-container{ 
+        min-height: auto; 
+        align-items: flex-start; 
+        height: auto;
+    }
+      .header-image { 
+        width: 100%; 
+        opacity: .6; 
+        object-position: center; 
+    }
+      .header-container::before { 
+        background: none
+    }
+      .header-content { 
+        padding: 30px 5%; 
+        max-width: 100%; 
+    }
+      .header-container h1 { 
+        font-size: 35px; 
+    }
+      .header-container p { 
+        max-width: 100%; 
+    }
+      .header-buttons {
+        width: 90%; 
+        gap: 8px; 
+        display: flex;
+        flex-direction: column;
+        margin-left: 19px;
+    }
+      .header-buttons .btn { 
+        flex: 1 1 45%; 
+        padding: 8px; 
+        gap: 7px; 
+    }
+      .header-stats { 
+        gap: 9px; 
+        /* flex-wrap: wrap;  */
+        margin-top: 20px; 
+    }
+      .mini-stat { 
+        padding-right: 8px; 
+        gap: 5px; 
+    }
+      .mini-stat .symbol { 
+        font-size: 18px; 
+    }
+      .mini-stat strong { 
+        font-size: 12px; 
+    }
+      .mini-stat small { 
+        font-size: 8px; 
+    }
+      .section { 
+        padding: 17px 4%; 
+    }
+      .section-heading h2 { 
+        font-size: 20px; 
+    }
+      .benefits, .program-grid { 
+        grid-template-columns: 1fr; 
+    }
+      .benefit-card { 
+        min-height: auto; 
+    }
+      .program-photo { 
+        height: 145px; 
+    }
+      .program-body p { 
+        min-height: 0; 
+    }
+    .training-policy{
+      width: 87%;
+    }
+      .program-footnote { 
+        justify-content: flex-start; 
+    }
+      .journey { 
+        padding: 12px; 
+    }
+      .journey-grid { 
+        grid-template-columns: 1fr; 
+        gap: 17px; 
+    }
+      .step { 
+        min-height: 75px; 
+    }
+      .step-arrow { 
+        display: none; 
+    }
+      .step p { 
+        font-size: 10px; 
+    }
+      .testimonial-grid { 
+        grid-template-columns: 1fr; 
+    }
+      .testimonial { 
+        padding: 12px; 
+    }
+      .apply-cta { 
+        margin: 0; 
+        border-radius: 0; 
+        padding: 22px 5%; 
+        align-items: flex-start; 
+        flex-direction: column; 
+    }
+      .apply-left { 
+        gap: 12px; 
+    }
+      .cap-icon { 
+        font-size: 38px; 
+    }
+      .apply-cta h2 { 
+        font-size: 19px; 
+    }
+      .apply-cta p { 
+        font-size: 12px; 
+    }
+      .apply-buttons { 
+        width: 100%; 
+    }
+      .apply-buttons .btn { 
+        flex: 1 1 100%; 
+    }
+      footer { 
+        grid-template-columns: 1fr; 
+        gap: 30px; 
+        padding: 20px 5%; 
+    }
+      .footer-brand, .footer-links { 
+        border-right: 0; 
+        padding-right: 0; 
+    }
+    .footer-links{
+         display: none;
+    }
+      .legal { 
+        align-items: center;
+        flex-direction: column; 
+        gap: 4px; 
+    }
+    }
+
+    /* Tablets and narrow screens */
+    @media screen and (min-width: 500px) and (max-width: 758px) {
+      .navbar { 
+        flex-wrap: wrap; 
+        padding: 10px 3%; 
+    }
+      .brand { 
+        min-width: auto; 
+    }
+      .nav-links { 
+        order: 3; 
+        width: 100%; 
+        justify-content: space-between; 
+        gap: 12px; 
+    }
+      .nav-links a { 
+        font-size: 12px; 
+    }
+      .header-container { 
+        min-height: 300px; 
+    }
+      .header-image { 
+        width: 70%; 
+    }
+      .header-content { 
+        padding: 25px 4%; 
+        max-width: 390px; 
+    }
+      .header-container h1 { 
+        font-size: 34px; 
+    }
+      .header-stats { 
+        flex-wrap: wrap; 
+        gap: 8px; 
+    }
+      .mini-stat { 
+        padding-right: 7px; 
+    }
+      .section { 
+        padding-left: 3%; 
+        padding-right: 3%; 
+    }
+      .benefits { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+      .program-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+      .program-photo { 
+        height: 120px; 
+    }
+      .journey-grid { 
+        grid-template-columns: repeat(2, 1fr); row-gap: 20px; 
+    }
+      .step-arrow { 
+        display: none; 
+    }
+      .testimonial-grid { 
+        grid-template-columns: 1fr; 
+    }
+      .apply-cta { 
+        flex-wrap: wrap; 
+    }
+      footer { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+      .footer-brand, .footer-links { 
+        border-right: 0; 
+    }
+    }
+
+    /* Larger tablets, small laptops and medium desktop screens */
+    @media (min-width: 759px) and (max-width: 1200px) {
+      .navbar { 
+        padding-left: 2%; 
+        padding-right: 2%; 
+        gap: 12px; 
+    }
+      .brand { 
+        min-width: 165px; 
+    }
+      .nav-links { 
+        gap: 17px; 
+    }
+      .hero-content { 
+        padding-left: 4%; 
+        max-width: 430px; 
+    }
+      .hero h1 { 
+        font-size: 38px; 
+    }
+      .section { 
+        padding-left: 3%; 
+        padding-right: 3%; 
+    }
+      .benefits { 
+        gap: 8px; 
+    }
+      .benefit-card { 
+        padding: 12px 9px; 
+        gap: 8px; 
+    }
+      .round-icon { 
+        flex-basis: 45px; 
+        width: 45px; 
+        height: 45px; 
+        font-size: 20px; 
+    }
+      .benefit-card p { 
+        font-size: 10px; 
+    }
+      .program-grid { 
+        gap: 10px; 
+    }
+      .program-body { 
+        padding-left: 12px;
+        padding-right: 12px; 
+    }
+      .program-body h3 { 
+        font-size: 14px; 
+    }
+      .journey-grid { 
+        gap: 8px; 
+    }
+      .step { 
+        gap: 7px; 
+    }
+      .step-icon { 
+        flex-basis: 52px; 
+        height: 52px; 
+    }
+      .step-arrow { 
+        right: -12px; 
+    }
+      footer { 
+        padding-left: 4%; 
+        padding-right: 4%; 
+        gap: 18px; 
+    }
+    }

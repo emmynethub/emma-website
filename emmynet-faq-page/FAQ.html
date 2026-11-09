@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Makes the layout adapt to mobile, tablet, laptop and desktop screens -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emmynet ICT Hub</title>
+  <link rel="stylesheet" href="FAQ.css">
+  <link rel="stylesheet" href="FAQmedia.css">
+</head>
+<body>
+  <!-- Navigation bar -->
+  <header class="navbar" id="top">
+    <a class="brand" href="#top" aria-label="Emmynet ICT Hub home">
+      <span class="brand-mark">⌘</span>
+      <span class="brand-name">Emmynet<span>ICT Hub</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../emmynet-about-page/about.html">About</a>
+      <a href="../emmynet-service-page/services.html">Services</a>
+      <a href="../emmynet-training-page/training.html">Training</a>
+      <a  href="../emmynet-contact-page/contact.html">Contact</a>
+      <a class="active" href="../emmynet-faq-page/FAQ.html">FAQ</a>
+       <a class="btn btn-yellow-head" href="#contact">Get Started</a>
+    </nav>
+    <button
+    class="menu-toggle"
+    id="menuToggle"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="navLinks"
+    type="button"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  </header>
+
+  <main>
+    <!-- FAQ hero and live question search -->
+    <section class="header-container">
+      <img class="header-image" src="assets/faq.jpg" alt="Question mark and chat bubble illustration">
+      <div class="header-content">
+        <h1>Frequently<br>Asked <span>Questions</span></h1>
+        <p>Got questions? We've got answers.</p>
+        <p>Can't find what you're looking for? 
+        <a href="#contact">Reach out to us directly.</a></p>
+        <label class="search-box" aria-label="Search frequently asked questions">
+          <span>⌕</span>
+          <input type="search" id="faqSearch" placeholder="Search your question...">
+        </label>
+      </div>
+    </section>
+
+    <!-- Questions are grouped by topic -->
+    <section class="faq-grid" id="faq">
+      <div>
+        <div class="faq-category" id="general">
+          <h2 class="category-title">
+            <span class="category-icon blue">♟</span> General
+          </h2>
+          <div class="faq-item open" data-color="blue">
+            <button class="faq-question" aria-expanded="true">What does Emmynet ICT Hub do? 
+              <span class="chevron"> &#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>We're a technology company offering two core things: custom web/software development for businesses, and hands-on tech training for individuals and teams. We also offer supporting IT services like consulting and systems support.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="blue">
+            <button class="faq-question" aria-expanded="false">Where are you located / do you work remotely? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>We serve clients remotely and can discuss in-person arrangements where available. Contact our team to confirm current service locations.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="blue">
+            <button class="faq-question" aria-expanded="false">How do I get started? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Send us a message using the contact form or book a consultation. Tell us what you need and we'll guide you through the next steps.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="training">
+          <h2 class="category-title">
+            <span class="category-icon green">♧</span> Training</h2>
+          <div class="faq-item" data-color="green">
+            <button class="faq-question" aria-expanded="false">Do I need prior experience to join a training program? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Not for our beginner tracks — they're designed to take you from zero to job-ready. Our upskilling programs do assume some baseline familiarity with tech concepts.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="green">
+            <button class="faq-question" aria-expanded="false">Are the programs online, in-person, or both? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Program format can vary. Some training may be online, in-person, or hybrid. Contact us to confirm the format for your chosen program.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="green">
+            <button class="faq-question" aria-expanded="false">Will I get help finding a job after the program? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Career guidance and portfolio support may be available depending on the program. Ask our team about the support included in your chosen track.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="green">
+            <button class="faq-question" aria-expanded="false">Can my company enroll a group/team? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Yes. Contact us to discuss corporate team training tailored to your organization's goals and schedule.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="green">
+            <button class="faq-question" aria-expanded="false">What happens if I fall behind or need extra help? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Reach out to your instructor or support contact. We can discuss the guidance or extra practice available for your program.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="faq-category" id="development">
+          <h2 class="category-title">
+            <span class="category-icon blue">▣</span> Development &amp; Services
+          </h2>
+          <div class="faq-item open" data-color="blue">
+            <button class="faq-question" aria-expanded="true">What kind of websites/apps do you build? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Everything from simple business websites to custom web applications, e-commerce stores, and internal business tools. We work primarily with React, Node.js, Next.js, PHP/Laravel and modern cloud platforms.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="blue">
+            <button class="faq-question" aria-expanded="false">How long does a typical project take? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Timing depends on the project's size, features, and feedback process. After discussing your requirements, we'll provide an estimated timeline.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="blue">
+            <button class="faq-question" aria-expanded="false">Do you offer ongoing support after launch? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Ongoing maintenance and technical support can be arranged. Tell us what your website or system needs after launch.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="blue">
+            <button class="faq-question" aria-expanded="false">What's your pricing like? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Pricing depends on the project scope, features, and level of support. Contact us for a tailored estimate after we understand your needs.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-category" id="account">
+          <h2 class="category-title">
+            <span class="category-icon purple">♟</span> Account &amp; Access
+          </h2>
+          <div class="faq-item" data-color="purple">
+            <button class="faq-question" aria-expanded="false">Do I need an account to use your services? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>No account is needed to make an initial enquiry. Some future services or training tools may require an account.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="purple">
+            <button class="faq-question" aria-expanded="false">I forgot my password. What do I do? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Click “Forgot Password” on the Login page and follow the reset instructions sent to your email. If you still need help, contact support.</p>
+            </div>
+          </div>
+          <div class="faq-item" data-color="purple">
+            <button class="faq-question" aria-expanded="false">How do I contact support? 
+              <span class="chevron">&#709;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Use the Contact Us button below or email info@emmynetict.com. Include a short description of the issue so we can assist you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search results are also shown as compact answer cards -->
+    <section class="answer-list" id="answerList" aria-live="polite">
+      <article class="answer-card visible" data-color="blue">
+        <span class="answer-symbol">♟</span>
+        <h3>What does Emmynet ICT Hub do?</h3>
+        <p>We're a technology company offering two core things: custom web/software development for businesses, and hands-on tech training for individuals and teams.<br>We also offer supporting IT services like consulting and systems support.</p>
+      </article>
+      <article class="answer-card visible" data-color="blue">
+        <span class="answer-symbol">▣</span>
+        <h3>What kind of websites/apps do you build?</h3>
+        <p>Everything from simple business websites to custom web applications, e-commerce stores, and internal business tools.<br>We work primarily with React, Node.js, Next.js, PHP/Laravel and modern cloud platforms.</p>
+      </article>
+      <article class="answer-card visible green" data-color="green">
+        <span class="answer-symbol">♧</span>
+        <h3>Do I need prior experience to join a training program?</h3>
+        <p>Not for our beginner tracks they're designed to take you from zero to job-ready.<br>Our upskilling programs do assume some baseline familiarity with tech concepts.</p>
+      </article>
+      <article class="answer-card visible purple" data-color="purple">
+        <span class="answer-symbol">♟</span>
+        <h3>I forgot my password. What do I do?</h3>
+        <p>Click “Forgot Password” on the <a href="../login%20files/login.html" style="color:#0755df">Login page</a> and follow the reset instructions sent to your email.</p>
+      </article>
+      <p class="no-results" id="noResults">No matching questions found. Please try another search or contact us.</p>
+    </section>
+
+    <!-- Final call to action -->
+    <section class="cta" id="contact">
+      <div class="cta-content">
+        <h2>Still Have Questions?</h2>
+        <p>We're happy to walk you through anything no pressure, no sales pitch.</p>
+        <div class="cta-buttons">
+          <a class="btn btn-yellow-head" href="mailto:emmyneticthub@gmail.com"><span>♙ &nbsp;</span> Contact Us</a>
+          <a class="btn btn-outline-white" href="mailto:emmanuelorbunde14@gmail.com?subject=Book%20a%20Consultation"><span>▦ &nbsp;</span> Book a Consultation</a>
+        </div>
+      </div>
+      <img class="cta-image" src="assets/faq-contact-art.jpg" alt="Phone, chat and email support illustration">
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-column footer-brand">
+        <a class="brand" href="#top">
+          <span class="brand-mark">⌘</span>
+          <span class="brand-name">Emmynet<span>ICT Hub</span></span>
+        </a>
+        <p>Building websites. Building skills.<br>Building the future.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/" aria-label="Facebook">f</a>
+          <a href="https://www.linkedin.com/" aria-label="LinkedIn">in</a>
+          <a href="https://x.com/" aria-label="X">X</a>
+          <a href="https://www.instagram.com/" aria-label="Instagram">◎</a>
+          <a href="https://www.youtube.com/" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="../index.html">Home</a>
+        <a href="../index.html#home">About Us</a>
+        <a href="../emmynet-service-page/services.html">Services</a>
+        <a href="../emmynet-training-page/training.html#programs">Training</a>
+        <a href="../emmynet-service-page/services.html">Portfolio</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-column">
+        <h3>Our Services</h3>
+        <a href="../emmynet-service-page/services.html">Web Development</a>
+        <a href="../emmynet-service-page/services.html">Software Development</a>
+        <a href="../emmynet-service-page/services.html">IT Consulting</a>
+        <a href="../emmynet-service-page/services.html">Systems Support</a>
+        <a href="../emmynet-service-page/services.html">Digital Strategy</a>
+      </div>
+      <div class="footer-column">
+        <h3>Training Programs</h3>
+        <a href="../emmynet-training-page/training.html#programs">Web Development Bootcamp</a>
+        <a href="../emmynet-training-page/training.html#programs">IT &amp; Data Fundamentals</a>
+        <a href="../emmynet-training-page/training.html#programs">Career Upskilling Track</a>
+        <a href="../emmynet-training-page/training.html#programs">Corporate Team Training</a>
+        <a href="../emmynet-training-page/training.html#programs">All Programs</a>
+      </div>
+      <div class="footer-column">
+        <h3>Contact Us</h3>
+        <a href="tel:+2348165960618">☎ &nbsp; +234 801 234 5678</a>
+        <a class="footer-email" href="mailto:emmyneticthub@gmail.com">✉ &nbsp; emmyneticthub@gmail.com</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Benue%2C%20Nigeria">♦ &nbsp; Benue, Nigeria</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2024 Emmynet ICT Hub. All Rights Reserved.</span>
+      <span>
+        <a href="#contact">Privacy Policy</a> &nbsp; | &nbsp; 
+        <a href="#contact">Terms &amp; Conditions</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="FAQ.js"></script>
+</body>
+</html>

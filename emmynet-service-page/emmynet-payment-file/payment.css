@@ -1,0 +1,1573 @@
+/* ==========================================================
+   HOW THIS FILE IS ARRANGED
+   The CSS follows the same order as payment.html.
+   Each part has its own CSS first, then its own media queries
+   (tablet 759-1200px, up to 758px, up to 499px) right under it.
+   1 Colours & base   2 Header   3 Layout   4 Sidebar   5 Main box
+   6 Progress bar     7 Panels & titles
+   8 Step 1 Personal Information   9 Step 2 Educational Background
+   10 Step 3 Programme Selection   11 Step 4 Additional Information
+   12 Step 5 Review & Submit       13 Step 6 Payment
+   14 Step 7 Confirmation          15 Back/Next buttons
+   16 Footer   17 Student dashboard   18 Pop-up window
+   ========================================================== */
+
+/* ---------- 1. COLOURS (change them here) ---------- */
+:root {
+  --navy:#0a1a5c;
+  --blue:#1243e0; 
+  --yellow: #b68e22; 
+  --green:#16a34a; 
+  --red:#dc2626;
+  --page:#f3f6fd; 
+  --white:#fdfafa; 
+  --status-bg:#e3ecfb; 
+  --text:#0a1a5c; 
+  --muted:#5b6b9a; 
+  --line:#d3ddf3;
+  --panel:#ffffff;   /* fields, dashboard cards (dark mode has its own value below) */
+  --grey:#808080;   /* text inside the form fields */
+  box-sizing:border-box; 
+  padding-top:env(safe-area-inset-top,0px); 
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --page:#0b1230;
+    --panel:#121c47;
+    --status-bg:#16224f;
+    --text:#e8eeff;
+    --muted:#9fb0e0;
+    --line:#2a3a78;
+    --grey: #808080;
+}
+}
+:root[data-theme="dark"]{
+    --page:#0b1230;
+    --panel:#121c47;
+    --status-bg:#16224f;
+    --text:#e8eeff;
+    --muted:#9fb0e0;
+    --line:#2a3a78;
+}
+
+/* ---------- 2. BASE ---------- */
+html{
+    background:var(--navy);
+    scroll-padding-top:env(safe-area-inset-top,0px);
+}
+*{
+    box-sizing:border-box;
+}
+body{
+    margin:0;
+    font-family:"Segoe UI",Arial,sans-serif;
+    background:var(--page);
+    color:var(--text);
+}
+a{
+    color:inherit;
+    text-decoration:none;
+}
+button{
+    font-family:inherit;
+}
+
+
+/* ==========================================================
+   2. HEADER
+   ========================================================== */
+
+header{
+    background:var(--navy);
+    color:var(--page);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 40px;
+    position:relative;
+}
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:28px;
+    font-weight:700;
+    line-height:1;
+}
+.logo span{
+    color:var(--yellow);
+    display:block;
+}
+.logo>div{
+    color: var(--white);
+}
+.logo-icon{
+    font-size:38px;
+    color:#4da3ff;
+}
+nav{
+    display:flex;
+    gap:38px;
+}
+nav a{
+    padding:8px 0;
+    border-bottom:3px solid transparent;
+    color: var(--white);
+    font-size: 18px;
+}
+nav a.active{
+    border-color:var(--yellow);
+}
+/* only shown inside the mobile dropdown */
+.menu-btn{
+    display:none;
+    background:none;
+    border:2px solid #fff;
+    color:#fff;
+    font-size:24px;
+    border-radius:8px;
+    padding:4px 12px;
+    cursor:pointer;
+}
+
+/* header: 759px - 1200px */
+@media (min-width:759px) and (max-width:1200px){
+  header{
+    padding:14px 20px;
+  }
+  nav{
+    gap:18px;
+    font-size:15px;
+  }
+}
+/* header: up to 758px */
+@media (min-width:0px) and (max-width:758px){
+  header{
+    padding:12px 16px;
+  }
+  nav{
+    gap:16px;
+    font-size:14px;
+  }
+  .btn-start{
+    padding:10px 16px;
+  }
+}
+/* header: up to 499px - the menu button opens a dropdown */
+@media screen and (max-width:499px){
+  .menu-btn{
+    display:block;
+  }
+  nav{
+    display:none;
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+    background:var(--navy);
+    flex-direction:column;
+    gap:0;
+    padding:8px 16px 16px;
+    z-index:10;
+    border-top:1px solid #2a3a78;
+  }
+  nav.open{
+    display:flex;
+  }
+  nav a{
+    padding:14px 0;
+    border-bottom:1px solid #1d2f7a;
+  }
+  .nav-start{
+    display:block;
+    margin-top:12px;
+    text-align:center;
+    border:0;
+  }
+  .btn-start.top{
+    display:none;
+  }
+  .logo{
+    font-size:20px;
+  }
+}
+
+
+/* ==========================================================
+   3. LAYOUT (sidebar + main box)
+   ========================================================== */
+
+.layout{
+    display:grid;
+    grid-template-columns:300px 1fr;
+    padding:8px 12px 20px;
+}
+
+/* let grid columns shrink to the screen instead of growing with their content */
+.layout > *{
+    min-width:0;
+}
+/* layout: 759px - 1200px */
+@media (min-width:759px) and (max-width:1200px){
+  .layout{
+    grid-template-columns:230px 1fr;
+  }
+}
+/* layout: up to 758px */
+@media (min-width:0px) and (max-width:758px){
+  .layout{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+}
+
+
+/* ==========================================================
+   4. SIDEBAR (the steps are added by JavaScript)
+   ========================================================== */
+
+.sidebar{
+    background:var(--navy);
+    color:#fff;
+    border-radius:14px;
+    padding:24px 22px;
+}
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:700;
+    font-size:22px;
+    line-height:1.2;
+}
+.brand i{
+    color:var(--blue);
+    border: 2px solid var(--yellow);
+    border-radius:50%;
+    width:52px;
+    height:52px;
+    display:grid;
+    place-items:center;
+    font-style:normal;
+    font-size:26px;
+}
+.brand span{
+    color: var(--yellow);
+}
+.sidebar h2{
+    margin:26px 0 6px;
+    font-size:24px;
+}
+.sidebar p{
+    margin:0 0 20px;
+    font-size:15px;
+    line-height:1.4;
+}
+.steps{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.steps li{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:8px 6px;
+    border-radius:10px;
+    margin-bottom:4px;
+    transition:background .4s;
+}
+.steps b{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:var(--green);
+    display:grid;
+    place-items:center;
+    font-size:16px;
+    flex:none;
+    transition:background .4s;
+}
+.steps li.current{
+    background:var(--blue);
+}
+.steps li.current b,.steps li.todo b{
+    background:#fff;
+    color:var(--blue);
+}
+.help{
+    background:#12297f;
+    border-radius:12px;
+    padding:18px;
+    margin-top:30px;
+    font-size:14px;
+}
+.help strong{
+    display:block;
+    font-size:18px;
+    margin:6px 0 4px;
+}
+
+/* sidebar: up to 499px (the top progress bar already shows the steps) */
+@media screen and (max-width:499px){
+  .sidebar .steps,.sidebar h2,.sidebar p{
+    display:none;
+  }
+  .sidebar{
+    padding:14px;
+  }
+  .help{
+    margin-top:12px;
+  }
+}
+
+
+/* ==========================================================
+   5. MAIN BOX (holds the progress bar, the steps and the buttons)
+   ========================================================== */
+
+.main{
+    background:var(--white);
+    border:1px solid var(--line);border-radius:14px;
+    margin-left:10px;
+    padding:24px 30px;
+}
+
+/* main box: up to 758px */
+@media (min-width:0px) and (max-width:758px){
+  .main{
+    margin-left:0;
+    padding:18px;
+  }
+}
+
+
+/* ==========================================================
+   6. ANIMATED PROGRESS INDICATOR
+   ========================================================== */
+
+.progress{
+    display:flex;
+    margin:0 0 22px;
+    padding-bottom:20px;
+    border-bottom:1px solid var(--line);
+}
+.p-step{
+    flex:1;
+    text-align:center;
+    position:relative;
+    font-size:16px;
+    color: var(--navy);
+}
+.line{
+    position:absolute;
+    top:19px;
+    left:-50%;
+    width:100%;
+    height:4px;
+    background:var(--line);
+}  
+ /* grey track */
+.p-step:first-child .line{
+    display:none;
+}
+.fill{
+    display:block;
+    height:100%;
+    width:0;
+    background:var(--green);
+    transition:width .6s ease;
+}  
+/* green bar that grows */
+.p-dot{
+    position:relative;
+    z-index:1;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    margin:0 auto 8px;
+    display:grid;
+    place-items:center;
+    font-weight:700;
+    font-size:20px;
+    color:#fff;
+    transition:background .4s,transform .4s;
+}
+.done .p-dot{
+    background:var(--green);
+}
+.current .p-dot{
+    background:var(--blue);
+    transform:scale(1.18);
+    color: var(--white);
+}
+.current{
+    font-weight:700;
+}
+.todo .p-dot{
+    background:var(--line);
+    color:var(--text);
+}
+
+/* progress bar: 759px - 1200px */
+@media (min-width:759px) and (max-width:1200px){
+  .p-step{
+    font-size:13px;
+  }
+}
+/* progress bar: up to 758px */
+@media (min-width:0px) and (max-width:758px){
+  .p-step{
+    font-size:11px;
+  }
+  .p-dot{
+    width:32px;
+    height:32px;
+    font-size:15px;
+  }
+  .line{
+    top:14px;
+  }
+}
+/* progress bar: up to 499px (scrolls sideways inside itself) */
+@media screen and (max-width:499px){
+  .progress{
+    overflow-x:auto;
+  }
+  .p-step{
+    min-width:70px;
+  }
+}
+
+
+/* ==========================================================
+   7. PANELS (one per step) AND STEP TITLES
+   ========================================================== */
+
+.panel{
+    display:none;
+}
+.panel.active{
+    display:block;
+    animation:fade .4s;
+}
+@keyframes fade{
+    from{opacity:0}to{opacity:1}
+}
+@media (prefers-reduced-motion:reduce){
+    .panel.active{
+        animation:none
+    }
+    .fill,.p-dot{
+        transition:none
+    }
+}
+
+.title{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:22px;
+}
+.title i{
+    background:var(--blue);
+    color:#fff;
+    width:60px;
+    height:54px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    font-style:normal;
+    font-size:26px;
+    flex:none;
+}
+.title h1{
+    margin:0;
+    font-size:34px;
+    color:var(--navy);
+}
+.title p{
+    margin:0;
+    font-size:18px;
+    color:var(--navy);
+}
+
+/* step titles: 759px - 1200px */
+@media (min-width:759px) and (max-width:1200px){
+  .title h1{
+    font-size:28px;
+  }
+}
+/* step titles: up to 758px */
+@media (min-width:0px) and (max-width:758px){
+  .title h1{
+    font-size:26px;
+  }
+  .title p{
+    font-size:15px;
+  }
+}
+
+
+/* ==========================================================
+   8. STEP 1: PERSONAL INFORMATION  (the form grid and field styles are also used by steps 2 and 4)
+   ========================================================== */
+
+.grid2{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px 28px;
+    color: var(--white);
+}
+
+.grid2 .field{
+    color: var(--navy);
+} 
+
+/* stops date/select fields overflowing on iPhones */
+.field input,.field select{
+    min-width:0;
+    max-width:100%;
+}
+
+.field label{
+    display:block;
+    font-weight:600;
+    margin-bottom:6px;
+    color: var(--navy);
+}
+.field input,.field select{
+    width:100%;
+    padding:13px 14px;
+    font-size:16px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--panel);
+    color: var(--grey);
+}
+.field input:focus,.field select:focus{
+    outline:2px solid var(--blue);
+    border-color:var(--blue);
+}
+.field .err{
+    display:none;
+    color:var(--red);
+    font-size:14px;
+    margin-top:4px;
+}
+.field.invalid input,.field.invalid select{
+    border-color:var(--red);
+}
+.field.invalid .err{
+    display:block;
+}
+
+/* step 1 form: up to 499px (one column) */
+@media screen and (max-width:499px){
+  .grid2{
+    grid-template-columns:1fr;
+  }
+}
+/* calendar icon in the Date of Birth field */
+.field input[type="date"]{
+    color-scheme:dark;                 /* makes the icon light on the dark field */
+}
+
+
+
+/* ==========================================================
+   9. STEP 2: EDUCATIONAL BACKGROUND  (uses the Step 1 form styles above)
+   ========================================================== */
+
+/* optional single-column form: add class "one" next to "grid2" in the HTML */
+
+.grid2.one{
+    grid-template-columns:1fr;
+    max-width:640px;
+} 
+
+
+/* ==========================================================
+   10. STEP 3: PROGRAMME SELECTION
+   ========================================================== */
+
+.prog{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    border:2px solid var(--line);
+    border-radius:12px;
+    padding:16px 20px;
+    margin-bottom:14px;
+    cursor:pointer;
+    max-width:640px;
+}
+.prog.selected{
+    border-color:var(--blue);
+    background:var(--status);
+}
+.pico{
+    width:58px;
+    height:58px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    font-size:28px;
+    color:#fff;
+    flex:none;
+}
+.prog strong{
+    display:block;
+    font-size:21px;
+    color: #0a1a5c;
+}
+.prog small{
+    display:block;
+    color:var(--muted);
+    font-size:15px;
+}
+.prog .price{
+    font-weight:700;
+    font-size:20px;
+    color:var(--blue);
+    margin-top:2px;
+}
+.prog input{
+    margin-left:auto;
+    width:22px;
+    height:22px;
+    accent-color:var(--blue);
+    flex:none;
+}
+
+/* same 2-column grid as Step 1 (the cards are added by JavaScript) */
+#progList{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px 28px;
+}
+#progList > *{
+    min-width:0;
+}
+#progList .prog{
+    margin-bottom:0;
+    max-width:none;
+}
+/* step 3: up to 499px (one column) */
+@media screen and (max-width:499px){
+  #progList{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ==========================================================
+   11. STEP 4: ADDITIONAL INFORMATION
+   ========================================================== */
+
+/* a field with class "full" spans both columns (used for the Step 4 text box) */
+.grid2 .field.full{
+    grid-column:1 / -1;
+}
+
+.field textarea{
+    width:100%;
+    min-height:130px;
+    padding:13px 14px;
+    font:inherit;
+    font-size:16px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    background:var(--page);
+    color:var(--text);
+    resize:vertical;
+}
+.field textarea:focus{
+    outline:2px solid var(--blue);
+    border-color:var(--blue);}
+.field.invalid textarea{
+    border-color:var(--red);
+}
+
+
+/* ==========================================================
+   12. STEP 5: REVIEW & SUBMIT
+   ========================================================== */
+
+.rev{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 20px;
+    margin-bottom:14px;
+    max-width:640px;
+}
+.rev>div{min-width:0;}
+.rico{
+    width:46px;
+    height:46px;
+    border-radius:10px;
+    background:var(--status-bg);
+    display:grid;
+    place-items:center;
+    font-size:22px;
+    flex:none;
+}
+.rev strong{
+    display:block;
+    font-size:19px;
+    color:var(--blue);
+    margin-bottom:4px;
+}
+.rev p{
+    margin:2px 0;
+    color:var(--muted);
+    font-size:16px;
+    word-break:break-word;
+}
+.edit{
+    margin-left:auto;
+    background:none;
+    border:0;
+    color:var(--blue);
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+}
+
+/* same 2-column grid as Step 1 (the cards are added by JavaScript) */
+#reviewBox{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px 28px;
+}
+#reviewBox > *{
+    min-width:0;
+}
+#reviewBox .rev{
+    margin-bottom:0;
+    max-width:none;
+}
+/* step 5: up to 499px (one column) */
+@media screen and (max-width:499px){
+  #reviewBox{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ==========================================================
+   13. STEP 6: PAYMENT
+   ========================================================== */
+
+.content{
+    display:grid;
+    grid-template-columns:1fr 360px;
+    gap:28px;
+}
+.summary{
+    border:1px solid var(--line);
+    border-radius:12px;
+    overflow:hidden;
+}
+.summary h3{
+    margin:0;background:var(--navy);
+    color:#fff;
+    padding:14px 22px;
+    font-size:24px;
+}
+.row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:10px 24px;
+    font-size:20px;
+}
+.amount{
+    font-size:38px;
+    font-weight:800;
+    color:var(--blue);
+}
+.methods-title{
+    font-size:22px;
+    font-weight:700;
+    margin:22px 0 12px;
+    color:var(--blue);
+}
+.methods{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+}
+.method{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px;
+    cursor:pointer;
+    position:relative;
+}
+.method input{
+    position:absolute;
+    right:14px;
+    top:14px;
+    width:20px;
+    height:20px;
+    accent-color:var(--blue);
+}
+.method.selected{
+    border:2px solid var(--blue);
+    background:var(--status-bg);
+}
+.method .ico{
+    font-size:30px;
+    width:42px;
+    text-align:center;
+    flex:none;
+}
+.method strong{
+    display:block;
+    font-size:19px;
+}
+.method small{
+    font-size:14px;
+    color:var(--muted);
+}
+.pay-now{
+    display:block;
+    margin:24px auto 0;
+    background:var(--blue);
+    color:#fff;
+    border:0;
+    border-radius:10px;
+    font-size:22px;
+    font-weight:700;
+    padding:16px 64px;
+    cursor:pointer;
+}
+.pay-now:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+.msg{
+    text-align:center;
+    color:var(--muted);
+    margin:10px 0 0;
+    min-height:22px;
+}
+.status{
+    background:var(--status-bg);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:20px 24px;
+    align-self:start;
+}
+.status h3{
+    margin:0 0 16px;
+    font-size:26px;
+    color:var(--blue);
+}
+.s-item{
+    display:flex;
+    gap:14px;
+    position:relative;
+    padding-bottom:18px;
+}
+.s-item:not(:last-child)::after{
+    content:"";
+    position:absolute;
+    left:22px;
+    top:48px;
+    bottom:2px;
+    width:3px;
+    background:#6b7280;
+}
+.s-dot{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    background:#6b7280;
+    color:#fff;
+    display:grid;
+    place-items:center;
+    font-size:22px;
+    flex:none;
+}
+.s-item.active .s-dot{
+    background:var(--blue);
+}
+.s-item.complete .s-dot{
+    background:var(--green);
+}
+.s-item strong{
+    font-size:21px;
+    color:var(--blue);
+    display:block;
+}
+.s-item span{
+    font-size:16px;
+    color:var(--muted);
+}
+.secure{
+    margin-top:18px;
+    color:var(--blue);
+    font-size:18px;
+}
+
+.content > *{
+    min-width:0;
+}
+
+.pay-details{
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px 18px;
+    margin-top:16px;
+    background:var(--panel);
+}
+.pay-details h4{
+    margin:0 0 10px;
+    color:var(--blue);
+    font-size:18px;
+}
+.pay-details p{
+    margin:6px 0 0;
+    color:var(--muted);
+    font-size:15px;
+}
+.pay-details .field{
+    margin-bottom:12px;
+}
+.pay-details .two{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+.demo-tag{
+    display:inline-block;
+    background:#fef3c7;
+    color:#92400e;
+    border-radius:6px;
+    padding:2px 8px;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+.bank-row{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:8px 0;
+    border-bottom:1px solid var(--line);
+}
+
+/* payment: 759px - 1200px */
+@media (min-width:759px) and (max-width:1200px){
+  .content{
+    grid-template-columns:1fr;
+  }
+}
+/* payment: up to 758px */
+@media (min-width:0px) and (max-width:758px){
+  .content{
+    grid-template-columns:1fr;
+  }
+  .row{
+    font-size:17px;
+  }
+  .amount{
+    font-size:30px;
+  }
+}
+/* payment: up to 499px */
+@media screen and (max-width:499px){
+  .methods{
+    grid-template-columns:1fr;
+  }
+  .row{
+    flex-direction:column;
+    gap:4px;
+    padding:10px 16px;
+  }
+  .pay-now{
+    width:100%;
+    padding:16px 0;
+  }
+  .pay-details .two{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* ==========================================================
+   14. STEP 7: CONFIRMATION (and the placeholder panels)
+   ========================================================== */
+
+.note{
+    border:2px dashed var(--line);
+    border-radius:12px;
+    padding:40px 20px;
+    text-align:center;
+    color:var(--muted);
+    font-size:18px;
+}
+.done-box{
+    text-align:center;
+    padding:30px 10px;
+    font-size:20px;
+}
+/* Payment successful screen (step 7) */
+.success{
+    text-align:center;
+    max-width:520px;
+    margin:0 auto;
+    position:relative;
+    padding-top:10px;
+}
+.dot{
+    position:absolute;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+}  
+ /* confetti dots */
+.tick{
+    width:84px;
+    height:84px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    font-size:46px;
+    display:grid;
+    place-items:center;
+    margin:22px auto 16px;
+    box-shadow:0 0 0 10px rgba(22,163,74,.2);
+    animation:pop .5s;
+}
+@keyframes pop{from{transform:scale(.4)}to{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.tick{animation:none}}
+.success h2{
+    font-size:32px;
+    color:var(--blue);
+    margin:0 0 10px;
+}
+.success p{
+    color:var(--muted);
+    margin:4px 0;
+    font-size:17px;
+}
+.receipt{
+    border:1px solid var(--line);
+    background:var(--status-bg);
+    border-radius:12px;
+    padding:16px;
+    margin:24px 0 18px;
+}
+.receipt small{
+    display:block;
+    color:var(--muted);
+}
+.receipt strong{
+    display:block;
+    font-size:22px;
+    margin-bottom:10px;
+}
+.btn-row{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+.btn-line{
+    background:var(--panel);
+    color:var(--blue);
+    border:2px solid var(--blue);
+}
+
+
+/* ==========================================================
+   15. BACK / NEXT BUTTONS
+   ========================================================== */
+
+.actions{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+    gap:12px;
+}
+.btn{
+    border:0;
+    border-radius:8px;
+    font-size:18px;
+    font-weight:700;
+    padding:14px 34px;
+    cursor:pointer;
+}
+.btn-next{
+    background:var(--blue);
+    color:#fff;
+    margin-left:auto;
+    transition: 0.75s ease-in-out;
+}
+.btn-next:hover{
+    background-color: var(--yellow);
+}
+.btn-back{
+    background:var(--status-bg);
+    color:var(--text);
+}
+.btn-back:hover{
+    background-color: var(--yellow);
+    color: var(--white);
+}
+.actions [hidden]{
+    display:none;
+}
+
+/* buttons: up to 499px */
+@media screen and (max-width:499px){
+  .btn{
+    padding:14px 22px;
+  }
+}
+
+
+/* ==========================================================
+   16. FOOTER
+   ========================================================== */
+
+footer{
+    background:var(--navy);
+    color:#fff;
+    display:flex;
+    justify-content:space-between;
+    padding:30px 40px;
+    font-size:14px;
+}
+footer em{
+    font-size: 14px;
+}
+
+/* footer: up to 758px */
+@media (min-width:0px) and (max-width:758px){
+  footer{
+    font-size:15px;
+    padding:20px;
+  }
+}
+/* footer: up to 499px */
+@media screen and (max-width:499px){
+  footer{
+    flex-direction:column;
+    gap:8px;
+    text-align:center;
+  }
+}
+
+
+/* ==========================================================
+   17. STUDENT DASHBOARD  (its tablet and mobile rules are in paymentquery.css)
+   ========================================================== */
+
+/* these elements use display:flex/grid, so [hidden] needs help to hide them */
+#dashboard[hidden],header[hidden],.layout[hidden],footer[hidden]{
+    display:none;
+}
+#dashboard{
+    display:flex;
+    min-height:100vh;
+    background:var(--white);
+}
+.d-side{
+    width:230px;
+    background:var(--navy);
+    color:#fff;
+    padding:22px 16px;
+    display:flex;
+    flex-direction:column;
+    flex:none;
+}
+.d-side .brand{
+    margin-bottom:26px;
+}
+.brand span{
+    color: var(--yellow);
+}
+.d-link{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    width:100%;
+    padding:12px 14px;
+    margin-bottom:4px;
+    border:0;
+    border-radius:10px;
+    background:none;
+    color:#fff;
+    font-size:16px;
+    text-align:left;
+    cursor:pointer;
+}
+.d-link.active{
+    background:var(--blue);
+}
+.d-logout{
+    margin-top:auto;
+}
+.d-main{
+    flex:1;
+    min-width:0;
+}
+.d-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--panel);
+    padding:14px 28px;
+    border-bottom:1px solid var(--line);
+}
+.d-menu{
+    display:none;
+    background:none;
+    border:2px solid var(--text);
+    color:var(--text);
+    font-size:22px;
+    border-radius:8px;
+    padding:2px 10px;
+    cursor:pointer;
+}
+.d-user{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+    margin-left:auto;
+}
+.avatar{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:var(--blue);
+    color:#fff;
+    display:grid;
+    place-items:center;
+    font-weight:700;
+    background-size:cover;background-position:center;background-repeat:no-repeat;
+    flex:none;
+    color:transparent;
+    font-size:0;
+}
+.d-body{
+    padding:24px 28px;
+}
+.d-body h1{
+    margin:0;
+    font-size:30px;
+    color:var(--blue);
+}
+.d-body .sub{
+    color:var(--navy);
+    margin:4px 0 20px;
+}
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+    margin-bottom:22px;
+}
+.stat{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:16px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+.stat i{
+    width:46px;
+    height:46px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    font-style:normal;
+    font-size:22px;
+    font-weight:700;
+    flex:none;
+}
+.stat b{
+    display:block;
+    font-size:28px;
+}
+.stat span{
+    color:var(--muted);
+    font-size:14px;
+}
+.card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:18px 20px;
+    margin-bottom:20px;
+}
+.card-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px;
+}
+.card-head h2{
+    margin:0;
+    font-size:20px;
+    color:var(--blue);
+}
+.link-btn{
+    background:none;
+    border:0;
+    color:var(--blue);
+    font-weight:600;
+    cursor:pointer;
+}
+.table-wrap{
+    overflow-x:auto;
+}   
+/* wide tables scroll inside the card */
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:480px;
+}
+th{
+    text-align:left;
+    color:var(--muted);
+    font-size:14px;
+    padding:10px 8px;
+    border-bottom:1px solid var(--line);
+}
+td{
+    padding:12px 8px;
+    border-bottom:1px solid var(--line);
+    font-size:15px;
+}
+.badge{
+    background:#dcfce7;
+    color:#15803d;
+    border-radius:20px;
+    padding:3px 12px;
+    font-size:13px;
+    font-weight:600;
+}
+.btn-sm{
+    background:var(--blue);
+    color:#fff;
+    border:0;
+    border-radius:6px;
+    padding:7px 14px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* Dashboard views: "My Applications" and "Payments" reuse the same cards */
+.d-body[data-view="applications"]
+ .stats,.d-body[data-view="applications"]
+ #payCard,
+.d-body[data-view="payments"] 
+.stats,.d-body[data-view="payments"] 
+#appCard{
+    display:none;
+}
+.d-body:not([data-view="dashboard"]) 
+.link-btn{
+    display:none;
+}   
+/* no "View All" on the full pages */
+/* Profile and Support pages: their cards are hidden except on their own page */
+.d-body [data-only]{
+    display:none;
+}
+.d-body[data-view="profile"] [data-only="profile"],
+.d-body[data-view="support"] [data-only="support"]{
+    display:block;
+}
+.d-body[data-view="profile"] 
+.stats,.d-body[data-view="profile"] #appCard,
+.d-body[data-view="profile"] #payCard,
+.d-body[data-view="support"] 
+.stats,.d-body[data-view="support"] #appCard,
+.d-body[data-view="support"] 
+#payCard{
+    display:none;
+}
+/* ----- My Progress, Submissions and Certificates pages (each card shows only on its own page) ----- */
+.d-body[data-view="progress"] [data-only="progress"],
+.d-body[data-view="submissions"] [data-only="submissions"],
+.d-body[data-view="certificates"] [data-only="certificates"],
+.d-body[data-view="progress"] [data-only="demo"],
+.d-body[data-view="submissions"] [data-only="demo"],
+.d-body[data-view="certificates"] [data-only="demo"]{
+    display:block;
+}
+.d-body[data-view="progress"] .stats,.d-body[data-view="progress"] #appCard,.d-body[data-view="progress"] #payCard,
+.d-body[data-view="submissions"] .stats,.d-body[data-view="submissions"] #appCard,.d-body[data-view="submissions"] #payCard,
+.d-body[data-view="certificates"] .stats,.d-body[data-view="certificates"] #appCard,.d-body[data-view="certificates"] #payCard{
+    display:none;
+}
+.muted{
+    color:var(--muted);
+    margin:0;
+}
+#dashboard .field label{
+    color:var(--text);
+}   /* readable in light and dark mode */
+.score-big{
+    font-size:48px;
+    font-weight:800;
+    color:var(--blue);
+    line-height:1;
+}
+.bar{
+    height:12px;
+    background:var(--line);
+    border-radius:8px;
+    overflow:hidden;
+    margin:12px 0;
+}
+.bar > i{
+    display:block;
+    height:100%;
+    width:0;
+    background:var(--green);
+    border-radius:8px;
+    transition:width .6s ease;
+}
+.perf-row{
+    margin-bottom:16px;
+}
+.perf-row .top{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    font-weight:600;
+}
+.perf-row small{
+    color:var(--muted);
+}
+.task{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:8px 12px;
+    padding:12px 0;
+    border-bottom:1px solid var(--line);
+}
+.task small{
+    display:block;
+    color:var(--muted);
+}
+.badge.warn{
+    background:#fef3c7;
+    color:#92400e;
+}
+.badge.info{
+    background:#dbeafe;
+    color:#1e40af;
+}
+.badge.locked{
+    background:#e5e7eb;
+    color:#4b5563;
+}
+.check-list{
+    list-style:none;
+    margin:0 0 14px;
+    padding:0;
+}
+.check-list li{
+    padding:6px 0;
+}
+.card details{
+    border-bottom:1px solid var(--line);
+    padding:10px 0;
+}
+.card summary{
+    cursor:pointer;
+    font-weight:600;
+}
+.card details p{
+    color:var(--muted);
+    margin:8px 0 0;
+}
+.who{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:18px;
+}
+.who .avatar{
+    width:64px;
+    height:64px;
+    font-size:22px;
+}
+.who span{
+    color:var(--muted);
+}
+/* profile photo (these must sit OUTSIDE the .who span rule above) */
+.avatar{
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    flex:none;
+}
+.avatar.has-photo{
+    color:transparent;
+    font-size:0;
+}
+.photo-actions{
+    display:flex;
+    gap:8px;
+    margin-top:8px;
+}
+.btn-remove{
+    background:var(--red);
+}
+
+
+/* ==========================================================
+   18. POP-UP WINDOW (View Details)
+   ========================================================== */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(10,26,92,.6);
+    display:grid;
+    place-items:center;
+    padding:16px;
+    z-index:50;
+}
+.modal[hidden]{
+    display:none;
+}
+.modal-box{
+    background:var(--panel);
+    color:var(--text);
+    border-radius:14px;
+    padding:22px 24px;
+    width:100%;
+    max-width:440px;
+    max-height:90vh;
+    overflow:auto;
+}
+.modal-box h2{
+    margin:0 0 12px;
+    color:var(--blue);
+}
+.bank-row b{
+    text-align:right;
+    word-break:break-word;
+}

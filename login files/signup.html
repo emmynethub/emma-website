@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Create Your Account - Emmynet ICT Hub</title>
+<link rel="stylesheet" href="signup.css">
+
+</head>
+<body>
+
+  <a class="logo" href="#">
+    <span class="mark">⌘</span>
+    <span>Emmynet<b>ICT Hub</b></span>
+  </a>
+  <h1>Create Your Account</h1>
+  <p class="intro">Join Emmynet ICT Hub to track your projects, access training materials, or manage your services — all in one place.</p>
+  <main class="card">
+    <form id="signupForm" novalidate>
+      <div class="field">
+        <label for="fullName">Full Name</label>
+        <div class="wrap">
+          <span class="ico">👤</span>
+          <input id="fullName" type="text" placeholder="Enter your full name" autocomplete="name">
+        </div>
+        <div class="err">Please enter your full name.</div>
+      </div>
+      <div class="field">
+        <label for="email">Email Address</label>
+        <div class="wrap">
+          <span class="ico">✉</span>
+          <input id="email" type="email" placeholder="Enter your email" autocomplete="email">
+        </div>
+        <div class="err">Please enter a valid email address.</div>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="wrap">
+          <span class="ico">🔒</span>
+          <input id="password" type="password" placeholder="Create a password" autocomplete="new-password">
+          <button type="button" class="eye" data-target="password" aria-label="Show password">👁</button>
+        </div>
+        <div class="err">Use at least 8 characters.</div>
+      </div>
+      <div class="field">
+        <label for="confirm">Confirm Password</label>
+        <div class="wrap">
+          <span class="ico">🔒</span>
+          <input id="confirm" type="password" placeholder="Confirm your password" autocomplete="new-password">
+          <button type="button" class="eye" data-target="confirm" aria-label="Show password">👁</button>
+        </div>
+        <div class="err">The two passwords do not match.</div>
+      </div>
+
+       <div class="gender-container">
+                            <div class="gender-box">
+                            <label for="gender">Gender</label>
+                            <select id="gender" name="gender" required>
+                                <option value="" disabled selected>Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                                <option value="prefer-not">Prefer not to say</option>
+                            </select>
+                        </div>
+
+                        <div class="country-box">
+                            <label for="country">Country</label>
+                            <select id="country" name="country" required>
+                              <option value="" disabled selected>Select country</option>
+                              <option value="Algeria">Algeria</option>
+                              <option value="Angola">Angola</option>
+                              <option value="Benin">Benin</option>
+                              <option value="Botswana">Botswana</option>
+                              <option value="Burkina Faso">Burkina Faso</option>
+                              <option value="Burundi">Burundi</option>
+                              <option value="Cabo Verde">Cabo Verde</option>
+                              <option value="Cameroon">Cameroon</option>
+                              <option value="Central African Republic">Central African Republic</option>
+                              <option value="Chad">Chad</option>
+                              <option value="Comoros">Comoros</option>
+                              <option value="Congo (DRC)">Congo (Democratic Republic)</option>
+                              <option value="Congo (Republic)">Congo (Republic)</option>
+                              <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+                              <option value="Djibouti">Djibouti</option>
+                              <option value="Egypt">Egypt</option>
+                              <option value="Equatorial Guinea">Equatorial Guinea</option>
+                              <option value="Eritrea">Eritrea</option>
+                              <option value="Eswatini">Eswatini</option>
+                              <option value="Ethiopia">Ethiopia</option>
+                              <option value="Gabon">Gabon</option>
+                              <option value="Gambia">Gambia</option>
+                              <option value="Ghana">Ghana</option>
+                              <option value="Guinea">Guinea</option>
+                              <option value="Guinea-Bissau">Guinea-Bissau</option>
+                              <option value="Kenya">Kenya</option>
+                              <option value="Lesotho">Lesotho</option>
+                              <option value="Liberia">Liberia</option>
+                              <option value="Libya">Libya</option>
+                              <option value="Madagascar">Madagascar</option>
+                              <option value="Malawi">Malawi</option>
+                              <option value="Mali">Mali</option>
+                              <option value="Mauritania">Mauritania</option>
+                              <option value="Mauritius">Mauritius</option>
+                              <option value="Morocco">Morocco</option>
+                              <option value="Mozambique">Mozambique</option>
+                              <option value="Namibia">Namibia</option>
+                              <option value="Niger">Niger</option>
+                              <option value="Nigeria">Nigeria</option>
+                              <option value="Rwanda">Rwanda</option>
+                              <option value="São Tomé and Príncipe">São Tomé and Príncipe</option>
+                              <option value="Senegal">Senegal</option>
+                              <option value="Seychelles">Seychelles</option>
+                              <option value="Sierra Leone">Sierra Leone</option>
+                              <option value="Somalia">Somalia</option>
+                              <option value="South Africa">South Africa</option>
+                              <option value="South Sudan">South Sudan</option>
+                              <option value="Sudan">Sudan</option>
+                              <option value="Tanzania">Tanzania</option>
+                              <option value="Togo">Togo</option>
+                              <option value="Tunisia">Tunisia</option>
+                              <option value="Uganda">Uganda</option>
+                              <option value="Zambia">Zambia</option>
+                              <option value="Zimbabwe">Zimbabwe</option>
+                            </select>
+                        </div>
+                    </div>
+
+              <div class="state-box">
+                        <label for="state">State</label>
+                            <select id="state" name="state" required disabled>
+                                <option value="" disabled selected>Select country first</option>
+                            </select>
+                    </div>
+
+      <div class="field roles-wrap" id="rolesWrap">
+        <span class="roles-title">I am signing up as:</span>
+        <div class="roles">
+          <label class="role">
+            <input type="radio" name="role" value="Client">
+            <span class="circle" style="background:#1243e0">👤</span>
+            <span><strong>Client</strong>I need services for my business</span>
+          </label>
+          <label class="role">
+            <input type="radio" name="role" value="Trainee / Student">
+            <span class="circle" style="background:#15803d">🎓</span>
+            <span><strong>Trainee / Student</strong>I want to learn new skills</span>
+          </label>
+          <label class="role">
+            <input type="radio" name="role" value="Corporate Team">
+            <span class="circle" style="background:#7c3aed">👥</span>
+            <span><strong>Corporate Team</strong>I want training for my team</span>
+          </label>
+        </div>
+        <div class="err roles-err">Please choose how you are signing up.</div>
+      </div>
+      <button class="btn" type="submit">Create Account →</button>
+    </form>
+    <p class="msg" id="msg" role="status"></p>
+    <p class="small">Already have an account? 
+      <a href="login.html">Log In</a>
+    </p>
+  </main>
+  <p class="terms">By signing up, you agree to our<br>
+    <a href="#">Terms of Service</a> & 
+    <a href="#">Privacy Policy</a>.</p>
+
+<script>
+const msg = document.getElementById('msg');
+
+// ---------- Show / hide password (the eye buttons) ----------
+document.querySelectorAll('.eye').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const input = document.getElementById(btn.dataset.target);
+    const hidden = input.type === 'password';
+    input.type = hidden ? 'text' : 'password';
+    btn.setAttribute('aria-label', hidden ? 'Hide password' : 'Show password');
+  });
+});
+
+// remove the red error as soon as the user types again
+document.addEventListener('input', e => e.target.closest('.field')?.classList.remove('invalid'));
+
+// ---------- Highlight the chosen role card ----------
+document.querySelectorAll('input[name="role"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    document.querySelectorAll('.role').forEach(r => r.classList.remove('selected'));
+    radio.closest('.role').classList.add('selected');
+    document.getElementById('rolesWrap').classList.remove('invalid');
+  });
+});
+
+// ---------- Create Account ----------
+document.getElementById('signupForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = document.getElementById('fullName');
+  const email = document.getElementById('email');
+  const pass = document.getElementById('password');
+  const confirm = document.getElementById('confirm');
+  const role = document.querySelector('input[name="role"]:checked');
+
+  // each check below is true when something is WRONG
+  const bad = [
+    [name, !name.value.trim()],
+    [email, !email.value.trim() || !email.checkValidity()],
+    [pass, pass.value.length < 8],
+    [confirm, confirm.value !== pass.value || !confirm.value]
+  ];
+  bad.forEach(([input, isBad]) => input.closest('.field').classList.toggle('invalid', isBad));
+  document.getElementById('rolesWrap').classList.toggle('invalid', !role);
+  if (bad.some(b => b[1]) || !role) { msg.textContent = ''; return; }
+
+  //  send name, email, password and role (role.value) to your server / login service here.
+  // For now this is only a demo: nothing is saved.
+  msg.textContent = 'Account created. Taking you to the login page…';
+  setTimeout(() => window.location.href = 'login.html', 1500);
+});
+
+const statesByCountry = {
+  Nigeria: [
+  "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa",
+  "Benue", "Borno", "Cross River", "Delta", "Ebonyi", "Edo",
+  "Ekiti", "Enugu", "FCT (Abuja)", "Gombe", "Imo", "Jigawa",
+  "Kaduna", "Kano", "Katsina", "Kebbi", "Kogi", "Kwara",
+  "Lagos", "Nasarawa", "Niger", "Ogun", "Ondo", "Osun",
+  "Oyo", "Plateau", "Rivers", "Sokoto", "Taraba", "Yobe",
+  "Zamfara"
+],
+  Ghana: ["Greater Accra", "Ashanti", "Western", "Volta"],
+  USA: ["California", "Texas", "New York", "Florida"],
+};
+
+const countrySelect = document.getElementById("country");
+const stateSelect = document.getElementById("state");
+
+countrySelect.addEventListener("change", function () {
+  stateSelect.innerHTML = '<option value="" disabled selected>Select state</option>';
+
+  const states = statesByCountry[this.value] || [];
+  states.forEach(function (state) {
+    const option = document.createElement("option");
+    option.value = state;
+    option.textContent = state;
+    stateSelect.appendChild(option);
+  });
+
+  stateSelect.disabled = false;
+});
+</script>
+</body>
+</html>
