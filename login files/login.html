@@ -46,7 +46,7 @@
     </form>
     <p class="msg" id="msg" role="status"></p>
     <p class="small">Don't have an account? 
-      <a href="signup.html">Sign Up</a>
+      <a href="signup.html" id="toSignup">Sign Up</a>
     </p>
     <p class="small">Are you an Instructor? 
       <a href="../emmynet-payment-file/instructor.html">Instructors Login</a>
@@ -79,9 +79,17 @@
    </div>
 <script>
 // the page a student opens after logging in 
-const DASHBOARD_URL = '../emmynet-payment-file/payment.html#dashboard';
+// Apply Now on the training page sends the chosen programme here (login.html?programme=Graphic%20Design).
+// A student who came to apply goes on to the application form with that programme chosen; everyone else goes to the dashboard.
+const programme = new URLSearchParams(location.search).get('programme');
+const DASHBOARD_URL = programme
+  ? '../emmynet-payment-file/payment.html?programme=' + encodeURIComponent(programme)
+  : '../emmynet-payment-file/payment.html#dashboard';
 
 const msg = document.getElementById('msg');
+
+// the Sign Up link keeps the chosen programme
+document.getElementById('toSignup').href = 'signup.html' + location.search;
 
 // ---------- Show / hide password (the eye button) ----------
 document.querySelectorAll('.eye').forEach(btn => {
@@ -109,6 +117,7 @@ document.getElementById('loginForm').addEventListener('submit', e => {
   if (emailBad || passBad) { msg.textContent = ''; return; }
 
   // send email + password to your login service / server here and wait for its answer.
+  try { localStorage.setItem('emmynetLoggedIn', '1'); } catch (err) {}   // lets the application form know the visitor has an account (demo only)
   if (DASHBOARD_URL) window.location.href = DASHBOARD_URL;
   else msg.textContent = 'login accepted. Set DASHBOARD_URL in this file to open the dashboard.';
 });

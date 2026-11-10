@@ -147,7 +147,8 @@ nav a:hover,nav .active{
     letter-spacing:.6px
 }
 .header-container h1{
-    font-size:clamp(80px,4vw,49px);line-height:1.16;
+    font-size:clamp(80px,4vw,49px);
+    line-height:1.16;
     letter-spacing:-1.5px;
     margin:10px 0 18px;
     color: var(--white);

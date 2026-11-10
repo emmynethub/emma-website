@@ -158,7 +158,7 @@
     </form>
     <p class="msg" id="msg" role="status"></p>
     <p class="small">Already have an account? 
-      <a href="login.html">Log In</a>
+      <a href="login.html" id="toLogin">Log In</a>
     </p>
   </main>
   <p class="terms">By signing up, you agree to our<br>
@@ -167,6 +167,13 @@
 
 <script>
 const msg = document.getElementById('msg');
+
+// Apply Now on the training page sends the chosen programme here (signup.html?programme=Graphic%20Design).
+// After signing up, the student goes straight to the application form with that programme chosen.
+const programme = new URLSearchParams(location.search).get('programme');
+const APPLY_URL = '../emmynet-payment-file/payment.html?programme=' + encodeURIComponent(programme || '');
+// the Log In link keeps the chosen programme
+document.getElementById('toLogin').href = 'login.html' + location.search;
 
 // ---------- Show / hide password (the eye buttons) ----------
 document.querySelectorAll('.eye').forEach(btn => {
@@ -212,8 +219,14 @@ document.getElementById('signupForm').addEventListener('submit', e => {
 
   //  send name, email, password and role (role.value) to your server / login service here.
   // For now this is only a demo: nothing is saved.
-  msg.textContent = 'Account created. Taking you to the login page…';
-  setTimeout(() => window.location.href = 'login.html', 1500);
+  if (programme) {
+    try { localStorage.setItem('emmynetLoggedIn', '1'); } catch (err) {}   // lets the application form know the visitor has an account (demo only)
+    msg.textContent = 'Account created. Taking you to your application…';
+    setTimeout(() => window.location.href = APPLY_URL, 1500);
+  } else {
+    msg.textContent = 'Account created. Taking you to the login page…';
+    setTimeout(() => window.location.href = 'login.html', 1500);
+  }
 });
 
 const statesByCountry = {
