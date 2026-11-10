@@ -209,6 +209,12 @@ selectProgramme(0);   // Web Development is selected by default
 const wanted = new URLSearchParams(location.search).get('programme');
 const wantedIndex = wanted ? PROGRAMMES.findIndex(p => p.name.toLowerCase() === wanted.trim().toLowerCase()) : -1;
 if (wantedIndex >= 0) selectProgramme(wantedIndex);
+// a programme on the training page that is not in this form's list yet: say so, so nobody pays for the wrong one by mistake
+if (wanted && wantedIndex < 0) {
+  const note = document.getElementById('wantedNote');
+  note.textContent = 'You chose "' + wanted + '" on the training page, but it is not in this list yet. Please choose the programme you want below, or contact us.';
+  note.hidden = false;
+}
 
 // ---------- 7b. Review summary (step 5) ----------
 const val = id => document.getElementById(id).value.trim();
