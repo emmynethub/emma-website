@@ -11,18 +11,18 @@
 <body>
   <!-- Main navigation -->
   <header class="navbar">
-    <a class="brand" href="#home" aria-label="Emmynet ICT Hub home">
+    <a class="brand" href="../index.html" aria-label="Emmynet ICT Hub home">
       <span class="brand-mark">⌘</span>
       <span class="brand-name">Emmynet<span>ICT Hub</span></span>
     </a>
-    <nav class="nav-links" aria-label="Main navigation">
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
      <a href="../index.html">Home</a>
       <a href="../emmynet-about-page/about.html">About</a>
       <a href="../emmynet-service-page/services.html">Services</a>
       <a class="active" href="../emmynet-training-page/training.html">Training</a>
       <a  href="../emmynet-contact-page/contact.html">Contact</a>
       <a href="../emmynet-faq-page/FAQ.html">FAQ</a>
-      <a class="btn btn-yellow nav-cta" href="#apply">Get Started</a>
+      <a class="btn btn-yellow nav-cta" href="../login files/login.html">Get Started</a>
     </nav>
     <!-- Mobile hamburger button -->
     <button 
@@ -47,20 +47,7 @@
         <p>Practical, hands-on tech training designed to take you from beginner to job-ready taught by people who build real products for real clients.</p>
         <div class="header-buttons">
           <a class="btn btn-yellow" href="#programs">View Programs <span>→</span></a>
-          <a class="btn btn-white-outline" href="javascript:void(0)
-          "onclick="openContactPopup()">Talk to an Advisor <span>→</span></a>
-         
-          <!-- Contact Pop-up -->
-          <div class="contact-popup" id="contactPopup">
-          <div class="popup-content">
-            <button class="close-btn" onclick="closeContactPopup()">&times;</button>
-              <h3>Talk to an Advisor</h3>
-              <p>Choose how you would like to contact us.</p>
-              <a href="https://wa.me/2348165960618" target="_blank" class="whatsapp-btn">
-              WhatsApp Us</a>
-              <a href="tel:+2348165960618" class="call-btn">Call Us</a>
-          </div>
-        </div>
+          <a class="btn btn-white-outline" href="#" onclick="openContactPopup(); return false;">Talk to an Advisor <span>→</span></a>
         </div>
         <div class="header-stats">
           <div class="mini-stat">
@@ -179,7 +166,7 @@
             <div class="details"><strong>Duration:</strong> 3 month<br>
               <strong>Format:</strong> Hybrid (Online + In-person)
             </div>
-            <a href="#" class="apply-btn">Apply Now</a>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
           </div>
         </article>
 
@@ -193,7 +180,7 @@
             <div class="details"><strong>Duration:</strong> 1 month<br>
               <strong>Format:</strong> Hybrid (Online + In-person)
             </div>
-            <a href="#" class="apply-btn">Apply Now</a>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
           </div>
         </article>
 
@@ -207,7 +194,7 @@
             <div class="details"><strong>Duration:</strong> 2 month<br>
               <strong>Format:</strong> Hybrid (Online + In-person)
             </div>
-            <a href="#" class="apply-btn">Apply Now</a>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
           </div>
         </article>
 
@@ -221,7 +208,7 @@
             <div class="details"><strong>Duration:</strong> 3 Weeks<br>
               <strong>Format:</strong> Hybrid (Online + In-person)
             </div>
-            <a href="#" class="apply-btn">Apply Now</a>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
           </div>
         </article>
 
@@ -235,11 +222,11 @@
             <div class="details"><strong>Duration:</strong> 3 month<br>
               <strong>Format:</strong> Hybrid (Online + In-person)
             </div>
-            <a href="#" class="apply-btn">Apply Now</a>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
           </div>
         </article>
         
-        <article class="program-card">
+        <article class="program-card" id="itData">
           <div class="program-photo">
             <img src="assets/it-data.jpg" alt="IT professional working with server equipment">
             <div class="round-icon green">▤</div>
@@ -250,11 +237,11 @@
             <div class="details"><strong>Duration:</strong> 2 month<br>
               <strong>Format:</strong> Online
             </div>
-            <a href="#" class="apply-btn">Apply Now</a>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="upskilling">
           <div class="program-photo">
             <img src="assets/career-upskilling.jpg" alt="Developer improving software skills">
             <div class="round-icon purple">▥</div>
@@ -265,11 +252,11 @@
             <div class="details"><strong>Duration:</strong> 2 month<br>
               <strong>Format:</strong> Evenings / Weekends
             </div>
-            <a href="#" class="apply-btn">Apply Now</a>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
           </div>
         </article>
 
-        <article class="program-card">
+        <article class="program-card" id="corporate">
           <div class="program-photo"><img src="assets/corporate-training.jpg" alt="Instructor leading a team training session">
             <div class="round-icon orange">♟</div>
           </div>
@@ -279,7 +266,7 @@
             <div class="details"><strong>Format:</strong> On-site or Remote<br>
               <span style="color:var(--text)">Scoped to your team</span>
             </div>
-            <a href="#" class="apply-btn">Apply Now</a>
+            <a href="../login files/login.html" class="apply-btn">Apply Now</a>
           </div>
         </article>
       </div>
@@ -383,20 +370,8 @@
         </div>
       </div>
       <div class="apply-buttons">
-        <a class="btn btn-yellow" href="mailto:info@emmynetict.com?subject=Training%20Application">Apply Now <span>→</span></a>
-         <a class="btn btn-white-outline" href="javascript:void(0)
-          "onclick="openContactPopup()">Talk to an Advisor <span>→</span></a>
-         
-          <!-- Contact Pop-up -->
-          <div class="contact-popup" id="contactPopup">
-          <div class="popup-content">
-            <button class="close-btn" onclick="closeContactPopup()">&times;</button>
-              <h3>Talk to an Advisor</h3>
-              <p>Choose how you would like to contact us.</p>
-              <a href="https://wa.me/2348165960618" target="_blank" class="whatsapp-btn">
-              WhatsApp Us</a>
-              <a href="tel:+2348165960618" class="call-btn">Call Us</a>
-          </div>
+        <a class="btn btn-yellow" href="../login files/login.html">Apply Now <span>→</span></a>
+         <a class="btn btn-white-outline" href="#" onclick="openContactPopup(); return false;">Talk to an Advisor <span>→</span></a>
       </div>
       <img src="assets/cta-student.jpg" alt="" style="display:none">
     </section>
@@ -405,7 +380,7 @@
   <!-- Footer -->
   <footer id="contact">
     <div class="footer-brand">
-      <a class="brand" href="#home">
+      <a class="brand" href="../index.html">
         <span class="brand-mark">⌘</span>
         <span class="brand-name">Emmynet
           <span>ICT Hub</span>
@@ -413,13 +388,12 @@
       </a>
       <p>Building websites. Building skills.<br>Building the future.</p>
       <div class="social-row">
-        <a href="https://www.facebook.com/ORBUNDE EMMANUEL TERFE" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">f</a>
-        <a href="https://www.LinkedIn.com/ORBUNDE EMMANUEL TERFE" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">in</a>
-        <a href="https://www.Twitter.com/ORBUNDE EMMANUEL TERFE" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">X</a>
-        <a href="https://www.instagram.com/ORBUNDE EMMANUEL TERFE" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">◎</a>
-        <a href="https://www.Youtube.com/ORBUNDE EMMANUEL TERFE" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">▶</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">f</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page">in</a>
+        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit our X (Twitter) page">X</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page">◎</a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube channel">▶</a>
       </div>
-      <p>© 2024 Emmynet ICT Hub. All Rights Reserved.</p>
     </div>
     <div class="footer-links">
       <h3>Quick Links</h3>
@@ -428,32 +402,43 @@
       <a href="../emmynet-service-page/services.html">Services</a>
       <a href="../emmynet-training-page/training.html">Training</a>
       <a href="../emmynet-contact-page/contact.html">Contact</a>
-      <a href="../emmynet-faq-page/FAQ.html">Faq</a>
+      <a href="../emmynet-faq-page/FAQ.html">FAQ</a>
     </div>
     <div class="footer-programs" id="training">
       <h3>Training Programs</h3>
-      <a href="training.html#frontEnd">front-end Development</a>
-      <a href="#">IT &amp; Data Fundamentals</a>
-      <a href="#">Career Upskilling Track</a>
-      <a href="#">Corporate Team Training</a>
-      <a href="#">All Programs</a>
+      <a href="#frontEnd">Frontend Development</a>
+      <a href="#itData">IT &amp; Data Fundamentals</a>
+      <a href="#upskilling">Career Upskilling Track</a>
+      <a href="#corporate">Corporate Team Training</a>
+      <a href="#programs">All Programs</a>
     </div>
     <div class="footer-contact">
       <h3>Get in Touch</h3>
       <a href="tel:+2348165960618"> ☎ &nbsp; +234 8165960618</a>
-      <a href="mailto:emmyneticthub@gmail.com?subject=Website%20Enquiry" target="_blank">
+      <a href="mailto:emmyneticthub@gmail.com?subject=Website%20Enquiry">
         <i class="fa fa-envelope" aria-hidden="true"></i> ✉ &nbsp; emmyneticthub@gmail.com
       </a>
-      <a href="https://www.google.com/maps/search/?api=1&query=Benue+State+University+Makurdi,+Benue,+Nigeria" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i> ♦ &nbsp; Benue, Nigeria</a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Benue+State+University+Makurdi,+Benue,+Nigeria" target="_blank" rel="noopener noreferrer"><i class="fa fa-map-marker" aria-hidden="true"></i> ♦ &nbsp; Benue, Nigeria</a>
     </div>
     <div class="legal">
-      <span>© 2024 Emmynet ICT Hub. All Rights Reserved.</span>
+      <span>© 2026 Emmynet ICT Hub. All Rights Reserved.</span>
       <span class="policy">
-        <a href="#contact">Privacy Policy</a> &nbsp; | &nbsp; 
-        <a href="#contact">Terms &amp; Conditions</a>
+        <a href="#apply">Privacy Policy</a> &nbsp; | &nbsp; 
+        <a href="#apply">Terms &amp; Conditions</a>
       </span>
     </div>
   </footer>
+
+  <!-- Contact pop-up (one copy, used by both "Talk to an Advisor" buttons) -->
+  <div class="contact-popup" id="contactPopup">
+    <div class="popup-content">
+      <button class="close-btn" type="button" aria-label="Close" onclick="closeContactPopup()">&times;</button>
+      <h3>Talk to an Advisor</h3>
+      <p>Choose how you would like to contact us.</p>
+      <a href="https://wa.me/2348165960618" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">WhatsApp Us</a>
+      <a href="tel:+2348165960618" class="call-btn">Call Us</a>
+    </div>
+  </div>
 
   <script src="training.js"></script>
 </body>

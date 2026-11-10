@@ -17,7 +17,7 @@
     z-index: 1000;
   }
   .brand {
-    width: aut;
+    width: auto;
     min-width: 0;
     justify-content:start !important;
     flex: 1;
@@ -133,7 +133,7 @@
       .header-container::before { 
         background: none
     }
-      .header-content { 
+      .image-content { 
         padding: 30px 5%; 
         max-width: 100%; 
     }
@@ -287,7 +287,7 @@
       .header-image { 
         width: 70%; 
     }
-      .header-content { 
+      .image-content { 
         padding: 25px 4%; 
         max-width: 390px; 
     }
@@ -347,11 +347,11 @@
       .nav-links { 
         gap: 17px; 
     }
-      .hero-content { 
+      .image-content { 
         padding-left: 4%; 
         max-width: 430px; 
     }
-      .hero h1 { 
+      .header-container h1 { 
         font-size: 38px; 
     }
       .section { 

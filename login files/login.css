@@ -57,6 +57,9 @@ a:visited{
     line-height:1; 
     text-decoration:none; 
 }
+.logo:visited {
+    color:var(--white);
+}
 .logo:hover { 
     text-decoration:none; 
 }
