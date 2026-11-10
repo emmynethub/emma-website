@@ -1417,79 +1417,21 @@ td{
 .d-body[data-view="certificates"] .stats,.d-body[data-view="certificates"] #appCard,.d-body[data-view="certificates"] #payCard{
     display:none;
 }
-.muted{
-    color:var(--muted);
-    margin:0;
-}
-#dashboard .field label{
-    color:var(--text);
-}   /* readable in light and dark mode */
-.score-big{
-    font-size:48px;
-    font-weight:800;
-    color:var(--blue);
-    line-height:1;
-}
-.bar{
-    height:12px;
-    background:var(--line);
-    border-radius:8px;
-    overflow:hidden;
-    margin:12px 0;
-}
-.bar > i{
-    display:block;
-    height:100%;
-    width:0;
-    background:var(--green);
-    border-radius:8px;
-    transition:width .6s ease;
-}
-.perf-row{
-    margin-bottom:16px;
-}
-.perf-row .top{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    font-weight:600;
-}
-.perf-row small{
-    color:var(--muted);
-}
-.task{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:8px 12px;
-    padding:12px 0;
-    border-bottom:1px solid var(--line);
-}
-.task small{
-    display:block;
-    color:var(--muted);
-}
-.badge.warn{
-    background:#fef3c7;
-    color:#92400e;
-}
-.badge.info{
-    background:#dbeafe;
-    color:#1e40af;
-}
-.badge.locked{
-    background:#e5e7eb;
-    color:#4b5563;
-}
-.check-list{
-    list-style:none;
-    margin:0 0 14px;
-    padding:0;
-}
-.check-list li{
-    padding:6px 0;
-}
+.muted{color:var(--muted);margin:0;}
+#dashboard .field label{color:var(--text);}   /* readable in light and dark mode */
+.score-big{font-size:48px;font-weight:800;color:var(--blue);line-height:1;}
+.bar{height:12px;background:var(--line);border-radius:8px;overflow:hidden;margin:12px 0;}
+.bar > i{display:block;height:100%;width:0;background:var(--green);border-radius:8px;transition:width .6s ease;}
+.perf-row{margin-bottom:16px;}
+.perf-row .top{display:flex;justify-content:space-between;gap:10px;font-weight:600;}
+.perf-row small{color:var(--muted);}
+.task{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 12px;padding:12px 0;border-bottom:1px solid var(--line);}
+.task small{display:block;color:var(--muted);}
+.badge.warn{background:#fef3c7;color:#92400e;}
+.badge.info{background:#dbeafe;color:#1e40af;}
+.badge.locked{background:#e5e7eb;color:#4b5563;}
+.check-list{list-style:none;margin:0 0 14px;padding:0;}
+.check-list li{padding:6px 0;}
 .card details{
     border-bottom:1px solid var(--line);
     padding:10px 0;
@@ -1517,24 +1459,10 @@ td{
     color:var(--muted);
 }
 /* profile photo (these must sit OUTSIDE the .who span rule above) */
-.avatar{
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-    flex:none;
-}
-.avatar.has-photo{
-    color:transparent;
-    font-size:0;
-}
-.photo-actions{
-    display:flex;
-    gap:8px;
-    margin-top:8px;
-}
-.btn-remove{
-    background:var(--red);
-}
+.avatar{background-size:cover;background-position:center;background-repeat:no-repeat;flex:none;}
+.avatar.has-photo{color:transparent;font-size:0;}
+.photo-actions{display:flex;gap:8px;margin-top:8px;}
+.btn-remove{background:var(--red);}
 
 
 /* ==========================================================
@@ -1571,3 +1499,8 @@ td{
     text-align:right;
     word-break:break-word;
 }
+
+/* ----- Step 7 congratulation line and the two new pop-ups ----- */
+.success p.congrats{font-size:20px;font-weight:700;color:var(--navy);margin:6px 0;}
+.modal-box p{margin:8px 0;line-height:1.5;}
+.modal-box a.btn{display:flex;text-decoration:none;}

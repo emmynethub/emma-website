@@ -165,13 +165,16 @@
     <a href="#">Terms of Service</a> &amp; 
     <a href="#">Privacy Policy</a>.</p>
 
+<script src="../emmynet-payment-file/account-data.js"></script>
 <script>
 const msg = document.getElementById('msg');
 
 // Apply Now on the training page sends the chosen programme here (signup.html?programme=Graphic%20Design).
 // After signing up, the student goes straight to the application form with that programme chosen.
 const programme = new URLSearchParams(location.search).get('programme');
-const APPLY_URL = '../emmynet-payment-file/payment.html?programme=' + encodeURIComponent(programme || '');
+const APPLY_URL = '../emmynet-payment-file/payment.html' + (programme ? '?programme=' + encodeURIComponent(programme) : '');
+// a student who is already signed in does not need to sign up again: straight to the application
+if (Accounts.isSignedIn()) location.replace(APPLY_URL);
 // the Log In link keeps the chosen programme
 document.getElementById('toLogin').href = 'login.html' + location.search;
 
@@ -217,16 +220,22 @@ document.getElementById('signupForm').addEventListener('submit', e => {
   document.getElementById('rolesWrap').classList.toggle('invalid', !role);
   if (bad.some(b => b[1]) || !role) { msg.textContent = ''; return; }
 
-  //  send name, email, password and role (role.value) to your server / login service here.
-  // For now this is only a demo: nothing is saved.
-  if (programme) {
-    try { localStorage.setItem('emmynetLoggedIn', '1'); } catch (err) {}   // lets the application form know the visitor has an account (demo only)
+  // DEMO: the account is saved in this browser. EDIT LATER: send these details to your server instead.
+  Accounts.createAccount({
+    name: name.value.trim(), email: email.value.trim(), password: pass.value, role: role.value,
+    gender: (document.getElementById('gender') || {}).value, country: (document.getElementById('country') || {}).value, state: (document.getElementById('state') || {}).value
+  }).then(result => {
+    if (!result.ok) {
+      email.closest('.field').classList.add('invalid');
+      msg.style.color = '#dc2626';
+      msg.textContent = 'An account with this email already exists. Please log in instead.';
+      return;
+    }
+    // new account: straight to the application page (the student signs in later, to open the dashboard)
+    msg.style.color = '';
     msg.textContent = 'Account created. Taking you to your application…';
     setTimeout(() => window.location.href = APPLY_URL, 1500);
-  } else {
-    msg.textContent = 'Account created. Taking you to the login page…';
-    setTimeout(() => window.location.href = 'login.html', 1500);
-  }
+  });
 });
 
 const statesByCountry = {

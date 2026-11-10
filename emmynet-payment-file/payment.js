@@ -24,6 +24,8 @@ STEPS.forEach(name => {
   sideSteps.insertAdjacentHTML('beforeend', `<li><b></b>${name}</li>`);
 });
 
+let applicationSent = false;   // true once the application was submitted (until the student changes an answer)
+
 // ---------- 3. Paint the page for the current step ----------
 function paint() {
   progress.querySelectorAll('.p-step').forEach((el, i) => {
@@ -42,7 +44,7 @@ function paint() {
   document.getElementById('backBtn').hidden = current === 1 || current === 7;
   document.getElementById('nextBtn').hidden = current >= 6;
   // on step 5 the button says "Submit Application" and the summary is rebuilt from the answers
-  document.getElementById('nextBtn').textContent = current === 5 ? 'Submit Application' : 'Next Step >';
+  document.getElementById('nextBtn').textContent = current === 5 ? (applicationSent ? 'Proceed to Payment >' : 'Submit Application') : 'Next Step >';
   if (current === 5) renderReview();
   if (current === 7) renderSuccess();
   window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -77,7 +79,7 @@ function go(dir) {
   // wait for the bar to finish (0.6s), then change the step and the page
   setTimeout(() => { current = target; paint(); busy = false; }, 650);
 }
-document.getElementById('nextBtn').addEventListener('click', () => go(1));
+document.getElementById('nextBtn').addEventListener('click', () => { if (current === 5 && !applicationSent) submitApplication(); else go(1); });
 document.getElementById('backBtn').addEventListener('click', () => go(-1));
 
 // ---------- 6. Payment step ----------
@@ -243,6 +245,55 @@ document.getElementById('reviewBox').addEventListener('click', e => {
   if (e.target.dataset.step) { current = +e.target.dataset.step; paint(); }
 });
 
+// ---------- 7b2. Submit Application (step 5): save it, congratulate the student, then let them continue to payment ----------
+const FORM_PANELS = '.panel[data-step="1"], .panel[data-step="2"], .panel[data-step="3"], .panel[data-step="4"]';
+// changing an answer after submitting means the application must be submitted again
+document.querySelectorAll(FORM_PANELS).forEach(panel => panel.addEventListener('input', () => { applicationSent = false; }));
+
+const submitModal = document.getElementById('submitModal');
+const payLink = () => location.href.split('#')[0].split('?')[0] + '?pay=1';   // what "Click here" in the email opens
+
+function submitApplication() {
+  const nameField = document.getElementById('name'), emailField = document.getElementById('email');
+  // the name and email are needed to save the application and to write to the student
+  if (!nameField.value.trim() || !emailField.value.trim() || !emailField.checkValidity()) {
+    current = 1; paint(); validate();
+    return;
+  }
+  const email = emailField.value.trim().toLowerCase();
+  const account = Accounts.currentEmail() || email;               // the application is kept under the student's account
+  const existing = Accounts.getApplication(account);
+  if (existing && existing.status === 'paid') { alert('Your application has already been paid for. Please sign in to open your dashboard.'); return; }
+  const p = PROGRAMMES[+document.querySelector('input[name="programme"]:checked').value];
+  const values = {};
+  document.querySelectorAll('.panel[data-step="1"] [id], .panel[data-step="2"] [id], .panel[data-step="4"] [id]').forEach(f => { values[f.id] = f.value; });
+  const firstTime = !(existing && existing.appNo);
+  const appNo = firstTime ? 'APP-' + new Date().getFullYear() + '-' + Math.floor(100000 + Math.random() * 900000) : existing.appNo;
+  const app = Accounts.saveApplication(account, {
+    appNo, status: 'submitted', submittedAt: Date.now(), formEmail: email, values,
+    programmeIndex: +document.querySelector('input[name="programme"]:checked').value, programme: p.name, amount: '₦' + p.price.toLocaleString('en-US')
+  });
+  applicationSent = true;
+  document.getElementById('nextBtn').textContent = 'Proceed to Payment >';
+  // the congratulation email (DEMO: kept in the demo mailbox. EDIT LATER: send it with your email service)
+  if (firstTime) {
+    const mail = Accounts.applicationEmail({ name: nameField.value.trim(), programme: p.name, appNo, payUrl: payLink() });
+    Accounts.sendEmail({ to: email, subject: mail.subject, html: mail.html });
+  }
+  document.getElementById('sText').innerHTML = 'Your application for <b>' + esc(p.name) + '</b> has been submitted successfully.<br>Application number: <b>' + esc(app.appNo) + '</b>';
+  document.getElementById('sMail').innerHTML = 'A copy of this message has been emailed to <b>' + esc(email) + '</b>.<br>(Demo: no real email is sent until the backend is connected. <a href="mailbox.html" target="_blank" rel="noopener">Open the demo mailbox</a> to see it.)';
+  submitModal.hidden = false;
+}
+// "Click here": close the pop-up and go to the payment step
+document.getElementById('sGo').addEventListener('click', () => { submitModal.hidden = true; go(1); });
+submitModal.addEventListener('click', e => { if (e.target === submitModal) submitModal.hidden = true; });
+
+// ---------- Sign-in pop-up (shown when someone who is not signed in presses "View Dashboard") ----------
+const signinModal = document.getElementById('signinModal');
+function openSigninPopup() { document.getElementById('signinGo').href = LOGIN_URL; signinModal.hidden = false; }
+document.getElementById('signinClose').addEventListener('click', () => { signinModal.hidden = true; });
+signinModal.addEventListener('click', e => { if (e.target === signinModal) signinModal.hidden = true; });
+
 // ---------- 7c. Payment successful screen (step 7) ----------
 let receipt = null;   // the reference and date are created once, when payment succeeds
 function renderSuccess() {
@@ -256,9 +307,13 @@ function renderSuccess() {
       programme: document.getElementById('progName').textContent
     };
   }
+  document.getElementById('okName').textContent = val('name') || 'Student';
   document.getElementById('okAmount').textContent = receipt.amount;
   document.getElementById('okRef').textContent = receipt.ref;
   document.getElementById('okDate').textContent = receipt.date;
+  // remember the payment, so the student sees it on the dashboard after signing in (DEMO: kept in this browser)
+  const account = Accounts.currentEmail() || val('email').toLowerCase();
+  if (account) Accounts.saveApplication(account, { status: 'paid', receipt, method: chosen, paidAt: Date.now() });
 }
 
 // ---------- Print Receipt: opens the receipt (logo, student details, table and a QR code). In the print window choose "Save as PDF" to keep a copy. ----------
@@ -336,6 +391,11 @@ function showDashboard(show) {
 
 // "View My Dashboard": fill the dashboard with the user's own details, then show it
 document.getElementById('dashBtn').addEventListener('click', () => {
+  // the dashboard is for signed-in students: anyone else is asked to sign in first
+  if (DASHBOARD_NEEDS_SIGNIN && !Accounts.isSignedIn()) { openSigninPopup(); return; }
+  openDashboard();
+});
+function openDashboard() {
   const name = val('name') || 'Student';
   document.getElementById('dName').textContent = name;
   document.getElementById('dAvatar').textContent = name.split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
@@ -343,9 +403,9 @@ document.getElementById('dashBtn').addEventListener('click', () => {
   document.getElementById('dApplied').textContent = receipt.date.split('  |  ')[0];
   document.getElementById('dRef').textContent = receipt.ref;
   document.getElementById('dAmt').textContent = receipt.amount;
-  document.getElementById('dMethod').textContent = chosen;
+  document.getElementById('dMethod').textContent = chosen || '-';
   showDashboard(true);
-});
+}
 
 // the dashboard pages: [title, subtitle]. Profile and Support are not built yet.
 const VIEWS = {
@@ -445,7 +505,7 @@ dashboard.addEventListener('click', e => {
   const b = e.target.closest('button');
   if (!b) return;
   const note = document.getElementById('dMsg');
-  if (b.id === 'logoutBtn') { try { localStorage.removeItem('emmynetLoggedIn'); } catch (err) {} window.location.href = LOGIN_URL; return; }   // back to the login page   
+  if (b.id === 'logoutBtn') { Accounts.signOut(); window.location.href = LOGIN_URL; return; }   // back to the login page   
   // start again from step 1
   if (b.id === 'dMenu') {                                    
     // mobile: open / close the sidebar
@@ -643,23 +703,59 @@ window.addEventListener('storage', e => { if (e.key === School.KEY) { populateDe
 if (!SHOW_DEMO) byId('demoCard').remove();
 
 // ---------- LINKS WITH THE REST OF THE WEBSITE (edit these lines if your folders change) ----------
-const LOGIN_URL = '../login%20files/login.html';        // where Logout sends the student
+const LOGIN_URL = '../login%20files/login.html';        // where a visitor signs in (and where Logout sends the student)
 const SIGNUP_URL = '../login%20files/signup.html';      // where visitors without an account are sent (see REQUIRE_ACCOUNT)
-// false = anyone can open this page (best while you build). true = visitors must have signed up or logged in first (DEMO ONLY: not real security).
+// false = anyone can open this page (best while you build). true = visitors must have signed up first (DEMO ONLY: not real security).
 const REQUIRE_ACCOUNT = false;
-if (REQUIRE_ACCOUNT) { let ok = false; try { ok = !!localStorage.getItem('emmynetLoggedIn'); } catch (err) {} if (!ok) location.replace(SIGNUP_URL + location.search); }
-// The page opens on what comes after the # in its address:
+// true = the dashboard needs a sign-in. false = anyone can open payment.html#dashboard and sees sample details (for building the dashboard).
+const DASHBOARD_NEEDS_SIGNIN = true;
+if (REQUIRE_ACCOUNT && !Accounts.currentEmail()) location.replace(SIGNUP_URL + location.search);
+
+// ---------- Restore the student's saved application (DEMO: kept in this browser) ----------
+function restoreApplication(app) {
+  Object.entries(app.values || {}).forEach(([id, v]) => { const el = document.getElementById(id); if (el) el.value = v; });
+  if (app.programmeIndex !== undefined) selectProgramme(app.programmeIndex);
+  if (app.receipt) receipt = app.receipt;
+  if (app.method) chosen = app.method;
+}
+const account = Accounts.currentEmail();
+const acc = account && Accounts.getAccount(account);
+if (acc) {   // the name and email from sign-up are already in the form
+  if (!val('name')) document.getElementById('name').value = acc.name;
+  if (!val('email')) document.getElementById('email').value = acc.email;
+}
+const savedApp = account ? Accounts.getApplication(account) : null;
+if (savedApp && savedApp.status === 'submitted') { restoreApplication(savedApp); applicationSent = true; }   // carry on where the student stopped
+
+// ---------- Which page opens first ----------
 //   payment.html            -> the application form, step 1
-//   payment.html#dashboard  -> the student dashboard (login sends students here)
+//   payment.html?pay=1      -> the payment step (the "Click here" link in the congratulation email)
+//   payment.html#dashboard  -> the student dashboard (the sign-in page sends students here)
 //   payment.html#step3      -> step 3 (also step1 to step7, applications, payments, progress, submissions, certificates, profile, support)
 const START_PAGE = location.hash.slice(1);
-if (/^step[1-7]$/.test(START_PAGE)) {
-  current = +START_PAGE.slice(4);
-} else if (Object.prototype.hasOwnProperty.call(VIEWS, START_PAGE)) {
-  if (!receipt) receipt = { ref: 'PYT-2026-000000', date: 'Nov 7, 2026  |  10:00 AM', amount: '₦120,000', programme: 'Web Development' };
-  if (!chosen) chosen = 'Bank Transfer';
-  document.getElementById('dashBtn').click();
-  showView(START_PAGE);
+const wantsPay = new URLSearchParams(location.search).get('pay') === '1';
+if (Object.prototype.hasOwnProperty.call(VIEWS, START_PAGE)) {
+  if (!DASHBOARD_NEEDS_SIGNIN) {
+    // building mode: sample details, no sign-in needed
+    if (!receipt) receipt = { ref: 'PYT-2026-000000', date: 'Nov 7, 2026  |  10:00 AM', amount: '₦120,000', programme: 'Web Development' };
+    if (!chosen) chosen = 'Bank Transfer';
+    openDashboard();
+    showView(START_PAGE);
+  } else if (!Accounts.isSignedIn()) {
+    location.replace(LOGIN_URL);                       // the dashboard needs a sign-in
+  } else if (savedApp && savedApp.status === 'paid') {
+    restoreApplication(savedApp);
+    openDashboard();
+    showView(START_PAGE);
+  } else if (savedApp && savedApp.status === 'submitted') {
+    current = 6;                                       // pay first, then the dashboard opens
+    msg.textContent = 'Please complete your payment to open your dashboard.';
+  }                                                    // no application yet: the form starts at step 1
+} else if (/^step[1-7]$/.test(START_PAGE)) {
+  current = +START_PAGE.slice(4);                      // paint() below shows this step
+} else if (wantsPay && savedApp) {
+  restoreApplication(savedApp);
+  current = savedApp.status === 'paid' ? 7 : 6;
 }
 paint();   // show step 1 when the page loads
 

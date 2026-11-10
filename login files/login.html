@@ -77,10 +77,13 @@
         <strong>One Platform</strong>Projects, learning &amp; support
       </div>
    </div>
+<script src="../emmynet-payment-file/account-data.js"></script>
 <script>
 // the page a student opens after logging in 
 // Apply Now on the training page sends the chosen programme here (login.html?programme=Graphic%20Design).
 // A student who came to apply goes on to the application form with that programme chosen; everyone else goes to the dashboard.
+// true = only people who signed up on this computer can log in (DEMO). false = any valid-looking email and password works (for building the site).
+const CHECK_ACCOUNTS = true;
 const programme = new URLSearchParams(location.search).get('programme');
 const DASHBOARD_URL = programme
   ? '../emmynet-payment-file/payment.html?programme=' + encodeURIComponent(programme)
@@ -116,10 +119,17 @@ document.getElementById('loginForm').addEventListener('submit', e => {
   pass.closest('.field').classList.toggle('invalid', passBad);
   if (emailBad || passBad) { msg.textContent = ''; return; }
 
-  // send email + password to your login service / server here and wait for its answer.
-  try { localStorage.setItem('emmynetLoggedIn', '1'); } catch (err) {}   // lets the application form know the visitor has an account (demo only)
-  if (DASHBOARD_URL) window.location.href = DASHBOARD_URL;
-  else msg.textContent = 'login accepted. Set DASHBOARD_URL in this file to open the dashboard.';
+  // DEMO: the email and password are checked against the sign-ups saved in this browser. EDIT LATER: ask your server instead.
+  Accounts.checkLogin(email.value, pass.value).then(result => {
+    if (CHECK_ACCOUNTS && result !== 'ok') {
+      msg.style.color = '#dc2626';
+      msg.textContent = result === 'noaccount' ? 'No account was found for this email. Please sign up first.' : 'Wrong email or password. Please try again.';
+      return;
+    }
+    msg.style.color = '';
+    Accounts.signIn(email.value);
+    window.location.href = DASHBOARD_URL;
+  });
 });
 
 // ---------- Google button ----------

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo Mailbox - Emmynet ICT Hub</title>
+<link rel="stylesheet" href="school.css">
+</head>
+<body>
+<header class="top">
+  <div class="logo">Emmynet <b>ICT Hub</b> &nbsp;|&nbsp; Demo Mailbox</div>
+  <nav>
+    <a href="payment.html">Application page</a>
+    <a href="../index.html">Website</a>
+  </nav>
+</header>
+<div class="demo-banner">Demo only: this site is not connected to an email service yet, so the emails it would send are kept here, in this browser. Once the backend is built, students will get these in their real inbox.</div>
+
+<main>
+  <div class="card" id="listCard">
+    <h2>Inbox</h2>
+    <div class="table-wrap" id="list"></div>
+  </div>
+  <div class="card" id="viewer" hidden>
+    <p class="muted" id="mailHead" style="margin-bottom:12px"></p>
+    <iframe id="frame" title="Email" style="width:100%;height:560px;border:1px solid var(--line);border-radius:10px;background:#fff"></iframe>
+  </div>
+</main>
+
+<script src="account-data.js"></script>
+<script src="mailbox.js"></script>
+</body>
+</html>
