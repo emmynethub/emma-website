@@ -535,7 +535,7 @@
         color: var(--white); 
         padding: 15px 5.5% 10px; 
         display: grid; 
-        grid-template-columns: 1.3fr 1fr 1.25fr 1.3fr; 
+        grid-template-columns: repeat(5, 1fr);
         gap: 25px; 
     }
     .footer-brand { 

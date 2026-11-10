@@ -58,25 +58,34 @@ a{
     position:relative;
     z-index:5
 }
-.brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    min-width:205px;
-    font-size:21px;
-    font-weight:bold;
-    line-height:1.1
-}
-.brand strong{
-    display:block;
-    color:var(--yellow);
-    font-size:18px;
-    margin-top:3px
-}
-.logo{
-    font-size:42px;
-    color:#168dff
-}
+.brand { 
+        display: flex; 
+        align-items: center; 
+        gap: 10px; 
+        min-width: 190px;
+    }
+    .brand-mark {
+      width: 42px; 
+      height: 42px; 
+      border: 2px solid #1688ff;
+      border-radius: 50%; 
+      color: #1688ff; 
+      display: grid; 
+      place-items: center;
+      font-size: 22px; 
+      font-weight: bold;
+    }
+    .brand-name { 
+        font-size: 21px; 
+        font-weight: 800; 
+        line-height: 1.05; 
+    }
+    .brand-name span { 
+        display: block; 
+        color: var(--yellow); 
+        font-size: 18px; 
+        margin-top: 3px; 
+    }
 .nav{
     display:flex;
     align-items:center;
@@ -414,7 +423,7 @@ a{
         color: var(--white); 
         padding: 15px 5.5% 10px; 
         display: grid; 
-        grid-template-columns: 1.3fr 1fr 1.25fr 1.3fr; 
+        grid-template-columns: repeat(5, 1fr);
         gap: 25px; 
     }
     .footer-brand { 

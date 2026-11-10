@@ -49,6 +49,16 @@
           <a class="btn btn-yellow" href="#programs">View Programs <span>→</span></a>
           <a class="btn btn-white-outline" href="#" onclick="openContactPopup(); return false;">Talk to an Advisor <span>→</span></a>
         </div>
+         <!-- Contact pop-up (one copy, used by both "Talk to an Advisor" buttons) -->
+        <div class="contact-popup" id="contactPopup">
+          <div class="popup-content">
+            <button class="close-btn" type="button" aria-label="Close" onclick="closeContactPopup()">&times;</button>
+            <h3>Talk to an Advisor</h3>
+            <p>Choose how you would like to contact us.</p>
+            <a href="https://wa.me/2348165960618" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">WhatsApp Us</a>
+            <a href="tel:+2348165960618" class="call-btn">Call Us</a>
+          </div>
+        </div>
         <div class="header-stats">
           <div class="mini-stat">
             <span class="symbol">♟</span>
@@ -404,6 +414,15 @@
       <a href="../emmynet-contact-page/contact.html">Contact</a>
       <a href="../emmynet-faq-page/FAQ.html">FAQ</a>
     </div>
+    <div class="footer-links">
+      <h3>Our Services</h3>
+      <a href="emmynet-service-page/services.html">Web Development</a>
+      <a href="emmynet-service-page/services.html">Software Development</a>
+      <a href="emmynet-service-page/services.html">IT Support</a>
+      <a href="emmynet-training-page/training.html">Training &amp; Upskilling</a>
+      <a href="emmynet-service-page/services.html">IT Consulting</a>
+      <a href="emmynet-service-page/services.html">Digital Strategy</a>
+    </div>
     <div class="footer-programs" id="training">
       <h3>Training Programs</h3>
       <a href="#frontEnd">Frontend Development</a>
@@ -428,17 +447,6 @@
       </span>
     </div>
   </footer>
-
-  <!-- Contact pop-up (one copy, used by both "Talk to an Advisor" buttons) -->
-  <div class="contact-popup" id="contactPopup">
-    <div class="popup-content">
-      <button class="close-btn" type="button" aria-label="Close" onclick="closeContactPopup()">&times;</button>
-      <h3>Talk to an Advisor</h3>
-      <p>Choose how you would like to contact us.</p>
-      <a href="https://wa.me/2348165960618" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">WhatsApp Us</a>
-      <a href="tel:+2348165960618" class="call-btn">Call Us</a>
-    </div>
-  </div>
 
   <script src="training.js"></script>
 </body>

@@ -66,10 +66,10 @@
 }
     /* Top navigation */
     .navbar {
-        width: 100%;
+      width: 100%;
       min-height: 62px;
       height: 80px;
-      padding: 8px 2.4%;
+      padding: 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -724,10 +724,10 @@
         color: var(--white); 
         padding: 15px 5.5% 10px; 
         display: grid; 
-        grid-template-columns: 1.3fr 1fr 1.25fr 1.3fr; 
+        grid-template-columns: repeat(5, 1fr);
         gap: 25px; 
     }
-    .footer-brand { 
+    .footer-brand {
         border-right: 1px solid #445371; 
         padding-right: 20px; 
     }
