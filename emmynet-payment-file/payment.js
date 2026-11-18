@@ -67,7 +67,7 @@ document.addEventListener('input', e => e.target.closest('.field')?.classList.re
 // ---------- 5. Move forward (+1) or back (-1) with the indicator animation ----------
 function go(dir) {
   if (busy) return;
-  //if (dir > 0 && !validate()) return;         
+  if (dir > 0 && !validate()) return;         
    // stay put if the page is not filled in
   const target = current + dir;
   if (target < 1 || target > STEPS.length) return;

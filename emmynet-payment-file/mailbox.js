@@ -1,4 +1,4 @@
-// DEMO MAILBOX: shows the emails the site "sent" (kept in this browser). Clicking "Click here" inside an email works like the real one.
+// MAILBOX: shows the emails the site "sent" (kept in this browser). Clicking "Click here" inside an email works like the real one.
 const { outbox } = Accounts;
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
