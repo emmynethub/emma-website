@@ -9,7 +9,7 @@ const dateToMs = text => new Date(text + 'T09:00:00').getTime();
 const TYPE_LABEL = { assignment: 'Assignment', test: 'Test', project: 'Final Project' };
 
 // ---------- passcode gate (DEMO ONLY: anyone can read this passcode, so it is not real security) ----------
-const PASSCODE = 'emmynet-demo';        // EDIT: change it. Real login comes with the backend.
+const PASSCODE = 'emmynet-2026'; // EDIT Real login comes with the backend.
 function openApp() { $('gate').hidden = true; $('app').hidden = false; renderAll(); }
 $('gateForm').addEventListener('submit', e => {
   e.preventDefault();
